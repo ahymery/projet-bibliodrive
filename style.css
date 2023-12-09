@@ -1,0 +1,25 @@
+input[type=search] {
+    padding: 12px 15px;
+margin-top: 10px;
+border-radius: 15px;
+border-color: #046aaa;
+}
+
+.alert{
+text-align: center;
+margin-bottom: 0 !important;
+}
+
+.btn{
+margin-left: 50px !important;
+margin-top: 10px !important;
+}
+s
+.btn[name = src_btn] {
+font-size: 20px;
+bottom: 0px;
+right: 0px;
+height: 26px;
+width: 26px;
+}
+
