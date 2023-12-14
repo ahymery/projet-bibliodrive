@@ -38,15 +38,20 @@
   </style>
 </head>
 <body>
-    <form action="authentification.php" method="post">
+      <form method="post">
         <h6><strong>SE CONNECTER</strong></h6>
-        <p>Identifiant</p>
-        <input type="text" name="id" placeholder="Ton identifiant">
+        <p>Adresse Mail</p>
+        <input type="email" name="mel" placeholder="Ton mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         <p>Mot de Passe</p>
-        <input type="password" name="mdp" placeholder="Ton Mot de passe">
+        <input type="password" name="mdp" placeholder="Ton Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
         <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
     </form>
-</div>
+    <?php
+      require_once('connexion.php');
+      $mel = $_POST['mel'];
+      $mdp = $_POST['mdp'];
 
+      $requete = "SELECT numero FROM utilisateur WHERE mel='".$mel."' AND mdp = '".$mdp."'";
+    ?>
 </body>
 </html>

@@ -1,83 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un membre</title>
+</head>
+<body>
+<form method="get">
+    <br>Nom : <input type="text" name="nom"><br>
+    <br>Prénom : <input type="text" name="prenom"><br>
+    <br>Adresse : <input type="text" name="adresse"><br>
+    <br>Mail : <input type="email" name="mel"><br>
+    <br>Mot de Passe : <input type="password" name="mdp"><br>
+    <br><input type="submit" value="Créer un profil">
+    <input type="reset" value="Reinitialiser">
+</form>
+
+<?php    
+    if (isset($_REQUEST["nom"])) {
+    require_once('connexion.php');
+    $nom=$_REQUEST["nom"];
+    $prenom=$_REQUEST["prenom"];
+    $adresse=$_REQUEST["adresse"];
+    $mel=$_REQUEST["mel"];
+    $mdp=$_REQUEST["mdp"];
+
+    $stmt = $connexion->prepare("INSERT INTO insertion(nom, prenom, adresse, mel, mdp) VALUES(:nom, :prenom, :adresse, :mel, :mdp)");
+    $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
+    $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+    $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
+    $stmt->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+    $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+    $stmt->execute();
+    }
+?>
+</body>
+</html>
+
 <?php
-
-require_once('connexion.php');
-$stmt = $connexion->prepare("INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal) VALUES (:mel, :mdp, :nom, :prenom, :adresse, :ville, :codepostal)");
-
-// Requetes POST pour saisie //
-
-$nom = $_POST('nom');
-
-$prenom = $_POST('prenom');
-ss
-$mel = $_POST('mel');
-
-$mot_de_passe = $_POST('mdp');
-
-$codepostal = $_POST('codepostal')
-
-$ville = $_POST('ville')
-
-$adresse = $_POST('adresse')
-
-$stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
-
-$stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-
-$stmt->bindValue(':mdp', $mot_de_passe, PDO::PARAM_STR);
-
-$stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
-
-$stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-
-$stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-
-$stmt->bindValue(':ville', $ville, PDO::PARAM_STR); 
-
-$stmt->execute();
-
-$nb_ligne_affectees = $stmt->rowCount();
-
-echo $nb_ligne_affectees." ligne() insérée(s).<BR>";
-
- 
-
-$dernier_numero = $connexion->lastInsertId();
-
-
-echo "Dernier numéro utilisateur généré : ".$dernier_numero."<BR>";
-
- 
-
-// insertion d'une autre ligne avec des valeurs différentes
-
-$nom = 'Martin';
-
-$prenom = 'Robert';
-
-$mel = 'robmartin@gmail.fr';
-
-$mot_de_passe = 'introuvable';
-
-$stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
-
-$stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-
-$stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
-
-$stmt->bindValue(':mot_de_passe', $mot_de_passe, PDO::PARAM_STR);
-
-$stmt->execute();
-
-$nb_ligne_affectees = $stmt->rowCount();
-
-echo $nb_ligne_affectees." ligne() insérée(s).<BR>";
-
- 
-
-$dernier_numero = $connexion->lastInsertId(); // Optionnel, Nota Bene : sur récup. sur l'objet PDO, connexion
-
-echo "Dernier numéro utilisateur généré : ".$dernier_numero."<BR>";
-
- 
 
 ?>

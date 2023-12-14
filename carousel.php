@@ -13,7 +13,7 @@
 
 <!-- contenu du carroussel -->
 <div class="carousel-inner">
-  <div class="carousel-item active">s
+  <div class="carousel-item active">
     <img src="hp1.png" alt="Harry Potter">
   </div>
   <div class="carousel-item">
@@ -22,7 +22,7 @@
   <div class="carousel-item">
     <img src="neuromancien.png" alt="Neuromancien">
   </div>
-  <div>
+  <div class="carousel-item">
     <img src="onepiece.png" alt="One Piece Tome 1">
   </div>
 </div>
