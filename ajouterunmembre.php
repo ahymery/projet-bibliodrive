@@ -40,8 +40,9 @@ img {
     text-align: center;
   }
 
-  .btn { 
-    margin-left: 550px;
+  .btn{
+  margin-left: 50px !important;
+  margin-top: 10px !important;
   }
 </style>
 </head>
@@ -56,14 +57,14 @@ img {
       <div class="col-md-8">    
           <form method="post">
               <h1>Créer un membre</h1><br>  
-              <h6>Mail</h6><input type="email" name="mel" placeholder="Mail du membre" style= "margin-left: 535px;">
-              <h6>Mot de Passe</h6> <input type="password" name="motdepasse" placeholder="Mot de passe du membre" style= "margin-left: 535px;">
-              <h6>Nom  </h6><input type="text" name="nom" placeholder="Nom du membre" style= "margin-left: 535px;">
-              <h6>Prénom</h6> <input type="text" name="prenom" style= "margin-left: 535px;">
-              <h6>Adresse</h6> <input type="text" name="adresse" style= "margin-left: 535px;">
-              <h6>Ville</h6><input type="text" name="ville" style= "margin-left: 535px;">
-              <h6>Code Postal</h6> <input type="text" name="codepostal" style= "margin-left: 535px;"><br>
-              <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
+              <br><h6>Mail</h6><input type="email" name="mel" placeholder="Mail" style= "margin-left: 400px;"><br>
+              <br><h6>Mot de Passe</h6> <input type="password" name="motdepasse" placeholder="Mot de passe" style= "margin-left: 400px;"><br>
+              <br><h6>Nom</h6><input type="text" name="nom" placeholder="Nom" style= "margin-left: 400px;"><br>
+              <br><h6>Prénom</h6> <input type="text" name="prenom" placeholder="Prénom" style= "margin-left: 400px;"><br>
+              <br><h6>Adresse</h6> <input type="text" name="adresse" placeholder="Adresse postale" style= "margin-left: 400px;"><br>
+              <br><h6>Ville</h6><input type="text" name="ville" placeholder="Ville" style= "margin-left: 400px;"><br>
+              <br><h6>Code Postal</h6> <input type="text" name="codepostal" placeholder="Code Postal" style= "margin-left: 400px;"><br>
+              <button type="submit" class="btn btn-primary btn-sm" name="add">
                 <i class="fas fa-plus"></i> Ajouter un membre
               </button>
           </form>

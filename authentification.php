@@ -39,7 +39,7 @@
         <p>Adresse Mail</p>
         <input type="email" name="mel" placeholder="Ton mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         <p>Mot de Passe</p>
-        <input type="password" name="motdepasse" placeholder="Ton Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        <input type="password" name="motdepasse" placeholder="Ton Mot de passe">
         <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
     </form>
     <?php

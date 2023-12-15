@@ -42,11 +42,26 @@ img {
 <body>
     <?php include ('entete.html');?>
 <form method="post">
-
+    <br><h5>AJOUTER UN LIVRE</h5><BR>
+    <label for="titre">Titre :</label><br>
+    <input type="text" name="titre"><br>
+    <label for="isbn13">ISBN13 :</label><br>
+    <input type="text" name="isbn13"><br>
+    <label for="anneeparution">Année de parution :</label><br>
+    <input type="text" name="anneeparution"><br>
+    <label for="resume">Résumé :</label><br>
+    <textarea name="resume" placeholder="Résumé du livre"></textarea><br>
+    <label for="dateajout">Date d'ajout :</label><br>
+    <input type="date" name="dateajout"><br>
+    <label for="image">Image :</label><br>
+    <input type="text" name="image" placeholder="Insérez le nom du fichier">
+    <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
+                <i class="fas fa-plus"></i> Ajouter un livre
+              </button>
 </form>
 
 <?php    
-    if (isset($_REQUEST["nom"])) {
+    if (isset($_REQUEST["titre"])) {
     require_once('connexion.php');
     $titre=$_REQUEST['titre'];
     $isbn13=$_REQUEST['isbn13'];
@@ -59,9 +74,11 @@ img {
     $stmt->bindValue(':titre', $titre, PDO::PARAM_STR);
     $stmt->bindValue(':isbn13', $isbn13, PDO::PARAM_INT);
     $stmt->bindValue(':anneeparution', $anneeparution, PDO::PARAM_INT);
-    $stmt->execute();
+    $stmt->bindValue(':resume', $resume, PDO::PARAM_STR);
+    $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_INT);
+    $stmt->bindValue(':image', $image, PDO::PARAM_STR);
+    $stmt->execute();   
     }
-    
-?>
+  ?>
 </body>
 </html>
