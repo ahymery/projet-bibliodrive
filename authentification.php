@@ -9,10 +9,6 @@
     <title>BiblioDrive</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <style>
-  .fakeimg {
-    height: 200px;ssss
-    background: #aaaaaa;
-  }
 
   img {
     height:50px;
@@ -39,19 +35,18 @@
 </head>
 <body>
       <form method="post">
-        <h6><strong>SE CONNECTER</strong></h6>
+        <h5><strong>SE CONNECTER</strong></h5>
         <p>Adresse Mail</p>
         <input type="email" name="mel" placeholder="Ton mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         <p>Mot de Passe</p>
-        <input type="password" name="mdp" placeholder="Ton Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        <input type="password" name="motdepasse" placeholder="Ton Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
         <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
     </form>
     <?php
       require_once('connexion.php');
       $mel = $_POST['mel'];
-      $mdp = $_POST['mdp'];
-
-      $requete = "SELECT numero FROM utilisateur WHERE mel='".$mel."' AND mdp = '".$mdp."'";
+      $motdepasse = $_POST['motdepasse'];
+      $requete = "SELECT numero FROM utilisateur WHERE mel='".$mel." AND motdepasse=".$motdepasse."";
     ?>
 </body>
 </html>
