@@ -1,3 +1,11 @@
+@font-face {
+    font-family: Fredoka;
+    src: url('fonts/Fredoka/static/Fredoka-Medium.ttf');
+}
+
+body{
+    font-family: Fredoka;
+}
 input[type=search] {
     padding: 12px 15px;
 margin-top: 10px;

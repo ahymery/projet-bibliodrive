@@ -12,7 +12,7 @@ try {
 
 } catch (Exception $e) {
 
-  echo "Connexion à MySQL impossible : d", $e->getMessage();
+  echo "Connexion à MySQL impossible : ", $e->getMessage();
   
   die();
 

@@ -37,7 +37,7 @@
       <form method="post">
         <h5><strong>SE CONNECTER</strong></h5>
         <p>Adresse Mail</p>
-        <input type="email" name="mel" placeholder="Ton mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <input type="email" name="mel" placeholder="Ton mail">
         <p>Mot de Passe</p>
         <input type="password" name="motdepasse" placeholder="Ton Mot de passe">
         <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
@@ -45,8 +45,12 @@
     <?php
       require_once('connexion.php');
       $mel = $_POST['mel'];
+      $nom = $_POST['nom'];
+      $prenom = $_POST['prénom'];
       $motdepasse = $_POST['motdepasse'];
       $requete = "SELECT numero FROM utilisateur WHERE mel='".$mel." AND motdepasse=".$motdepasse."";
+
+
     ?>
 </body>
 </html>

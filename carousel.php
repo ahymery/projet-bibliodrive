@@ -14,16 +14,16 @@
 <!-- contenu du carroussel -->
 <div class="carousel-inner">
   <div class="carousel-item active">
-    <img src="hp1.png" alt="Harry Potter">
+    <img src="images/hp1.png" alt="Harry Potter">
   </div>
   <div class="carousel-item">
-    <img src="Le_Petit_Prince.png" alt="Le Petit Prince">
+    <img src="images/Le_Petit_Prince.png" alt="Le Petit Prince">
   </div>
   <div class="carousel-item">
-    <img src="neuromancien.png" alt="Neuromancien">
+    <img src="images/neuromancien.png" alt="Neuromancien">
   </div>
   <div class="carousel-item">
-    <img src="onepiece.png" alt="One Piece Tome 1">
+    <img src="images/onepiece.png" alt="One Piece Tome 1">
   </div>
 </div>
 
