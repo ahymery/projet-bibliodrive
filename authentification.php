@@ -35,7 +35,7 @@
 </head>
 <body>
       <form method="post">
-        <h5><strong>SE CONNECTER</strong></h5>
+        <br><h5><strong>SE CONNECTER</strong></h5>
         <p>Adresse Mail</p>
         <input type="email" name="mel" placeholder="Ton mail">
         <p>Mot de Passe</p>
@@ -48,9 +48,14 @@
       $nom = $_POST['nom'];
       $prenom = $_POST['prénom'];
       $motdepasse = $_POST['motdepasse'];
-      $requete = "SELECT numero FROM utilisateur WHERE mel='".$mel." AND motdepasse=".$motdepasse."";
+      
+      $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel='".$mel." AND motdepasse=".$motdepasse."");
+      $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
+      $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
+      $stmt->setfetchmod(PDO::FETCH_OBJ);
+      $stmt->execute();
 
-
+      
     ?>
 </body>
 </html>

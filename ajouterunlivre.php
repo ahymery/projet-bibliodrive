@@ -42,24 +42,26 @@ img {
 <body>
     <?php include ('entete.html');?>
 <form method="post">
-    <br><h5>AJOUTER UN LIVRE</h5><BR>
-    <label for="titre">Titre :</label><br>
-    <input type="text" name="titre"><br>
-    <label for="isbn13">ISBN13 :</label><br>
-    <input type="text" name="isbn13"><br>
-    <label for="anneeparution">Année de parution :</label><br>
-    <input type="text" name="anneeparution"><br>
-    <label for="resume">Résumé :</label><br>
-    <textarea name="resume" placeholder="Résumé du livre"></textarea><br>
-    <label for="dateajout">Date d'ajout :</label><br>
-    <input type="date" name="dateajout"><br>
-    <label for="image">Image :</label><br>
-    <input type="text" name="image" placeholder="Insérez le nom du fichier">
+    <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
+    <label for="auteur" style="margin-left: 550px;">Auteur:</label><br>
+    <input type="text" style="margin-left: 550px;"><br>
+    <label for="titre" style= "margin-left: 550px;">Titre :</label><br>
+    <input type="text" name="titre" style= "margin-left: 550px;"><br>
+    <label for="isbn13" style= "margin-left: 550px;">ISBN13 :</label><br>
+    <input type="text" name="isbn13" style= "margin-left: 550px;"><br>
+    <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
+    <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
+    <label for="resume" style= "margin-left: 550px;">Résumé :</label><br>
+    <textarea name="resume" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
+    <label for="dateajout" style= "margin-left: 550px;">Date d'ajout :</label><br>
+    <input type="text" name="dateajout"  style= "margin-left: 550px;"><br>
+    <label for="image" style= "margin-left: 550px;">Image :</label><br>
+    <input type="text" name="image" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
     <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
                 <i class="fas fa-plus"></i> Ajouter un livre
               </button>
 </form>
-
+</div>  
 <?php    
     if (isset($_REQUEST["titre"])) {
     require_once('connexion.php');
@@ -70,14 +72,14 @@ img {
     $dateajout=$_REQUEST['dateajout'];
     $image=$_REQUEST['image'];
 
-    $stmt = $connexion->prepare("INSERT INTO livre(titre, isbn13, anneeparution, resume, dateajout, image) VALUES (':titre', ':isbn13', ':anneeparution', ':resume', ':dateajout', ':image'");
+    $stmt = $connexion->prepare("INSERT INTO livre VALUES (':titre', ':isbn13', ':anneeparution', ':resume', ':dateajout', ':image'");
     $stmt->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $stmt->bindValue(':isbn13', $isbn13, PDO::PARAM_INT);
-    $stmt->bindValue(':anneeparution', $anneeparution, PDO::PARAM_INT);
+    $stmt->bindValue(':isbn13', $isbn13, PDO::PARAM_STR);
+    $stmt->bindValue(':anneeparution', $anneeparution, PDO::PARAM_STR);
     $stmt->bindValue(':resume', $resume, PDO::PARAM_STR);
-    $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_INT);
-    $stmt->bindValue(':image', $image, PDO::PARAM_STR);
-    $stmt->execute();   
+    $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_STR);
+    $stmt->bindValue(':image', $image, PDO::PARAM_STR); 
+    $stmt->execute();
     }
   ?>
 </body>

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <body>
-            <div class="alert alert-warning text-center" id="alert">
-                <strong>Information !</strong> La Bibliothèque de Moulinsart est fermée au public jusqu'à nouvel ordre. Mais il vous est possible de réserver et retirer vos livres via notre service BiblioDrive !
-            </div>
-            <div class="jumbotron text-center" style="margin-bottom:0; border-radius:0;">
-                <h1>BiblioDrive</h1>
+    <div class="alert alert-warning text-center" id="alert">
+        <strong>Information !</strong> La Bibliothèque de Moulinsart est fermée au public jusqu'à nouvel ordre. Mais il vous est possible de réserver et retirer vos livres via notre service BiblioDrive !
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0; border-radius:0;">
+        <h1>BiblioDrive</h1>
             </div>
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-                <a class="navbar-brand" href="accueil.php"><img src="favicon.png"></a>
+                <a class="navbar-brand" href="accueil.php"><img src="images/favicon.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <input type="search" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
+                            <input type="search" name="recherche" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
                         </li>
                         <li class="nav-item">
                             <button type="submit" class="btn btn-outline-light btn-lg">
@@ -26,11 +26,8 @@
                             <button type="button" class="btn btn-outline-light btn-lg">
                                 <i class="fas fa-shopping-basket"></i> Panier
                             </button>
-                         <li class="nav-item">
-                            <a href="ajouterunmembre.php" class="btn btn-outline-light btn-lg" role="button">
-                                <i class="fas fa-user"></i> Créer un profil
-                            </a>
-                    </li>    
+                        </li>
+                    </li>   
                 </ul>
             </div>  
         </nav>

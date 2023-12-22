@@ -4,8 +4,8 @@
   <title>BiblioDrive</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <link rel="stylesheet" href="style2.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -50,22 +50,26 @@ img {
     <div class="row">
       <div class="col-md-8">    
           <form method="post">
-              <h1>Créer un membre</h1><br>  
-              <br><h6>Mail</h6><input type="email" name="mel" placeholder="Mail" style= "margin-left: 400px;"><br>
-              <br><h6>Mot de Passe</h6> <input type="password" name="motdepasse" placeholder="Mot de passe" style= "margin-left: 400px;"><br>
-              <br><h6>Nom</h6><input type="text" name="nom" placeholder="Nom" style= "margin-left: 400px;"><br>
-              <br><h6>Prénom</h6> <input type="text" name="prenom" placeholder="Prénom" style= "margin-left: 400px;"><br>
-              <br><h6>Adresse</h6> <input type="text" name="adresse" placeholder="Adresse postale" style= "margin-left: 400px;"><br>
-              <br><h6>Ville</h6><input type="text" name="ville" placeholder="Ville" style= "margin-left: 400px;"><br>
-              <br><h6>Code Postal</h6> <input type="text" name="codepostal" placeholder="Code Postal" style= "margin-left: 400px;"><br>
-              <button type="submit" class="btn btn-primary btn-sm" name="add">
+              <br><h1 style= "margin-left: 550px;"><strong>CRÉER UN MEMBRE</strong></h1><br>  
+              <label for="email" style= "margin-left: 750px;">Email :</label><br>
+              <input type="email" name="mel" placeholder="Mail" style= "margin-left: 750px;"><br>
+              <label for="password" style= "margin-left: 750px;">Mot de passe :</label><br>
+              <input type="password" name="motdepasse" placeholder="Mot de passe" style= "margin-left: 750px;"><br>
+              <label for="nom" style= "margin-left: 750px;">Nom :</label><br>
+              <input type="text" name="nom" placeholder="Nom" style= "margin-left: 750px;"><br>
+              <label for="prénom" style= "margin-left: 750px;">Prénom :</label><br>
+              <input type="text" name="prenom" placeholder="Prénom" style= "margin-left: 750px;"><br>
+              <label for="adresse" style= "margin-left: 750px;">Adresse :</label><br>
+              <input type="text" name="adresse" placeholder="Adresse postale" style= "margin-left: 750px;"><br>
+              <label for="ville" style= "margin-left: 750px;">Ville :</label><br>
+              <input type="text" name="ville" placeholder="Ville" style= "margin-left: 750px;"><br>
+              <label for="codepostal" style= "margin-left: 750px;">Code Postal :</label><br>
+              <input type="text" name="codepostal" placeholder="Code Postal" style= "margin-left: 750px;"><br>
+              <button type="submit" class="btn btn-outline-primary btn-sm" name="add" style= "margin-left: 750px;">
                 <i class="fas fa-plus"></i> Ajouter un membre
               </button>
           </form>
-      </div>  
-      <div class="col-md-4">
-        <?php include("authentification.php");?>
-      </div>  
+      </div>   
     </div>
 
 <?php    
