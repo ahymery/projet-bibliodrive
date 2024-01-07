@@ -13,7 +13,6 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-
 img {
   height:50px;
 }
@@ -35,12 +34,13 @@ img {
       border-radius: 15px;
       border-color: #046aaa;
   }
-  
-
 </style>
 </head>
 <body>
-    <?php include ('entete.html');?>
+  <!-- Include de l'entête sur la page -->
+    <?php include ('admin.html');?>
+
+  <!-- Formulaire permettant d'ajouter un membre -->
 <form method="post">
     <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN MEMBRE</strong></h1><br>
     <label for="mel" style="margin-left: 550px;">Mail :</label><br>
@@ -61,7 +61,13 @@ img {
                 <i class="fas fa-plus"></i> Ajouter un membre
               </button>
 </form>
+
+<br>
+<br>
+<br>
 </div>  
+
+<!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
 
 <?php    
     if (isset($_REQUEST["nom"])) {
@@ -73,17 +79,17 @@ img {
     $motdepasse=$_REQUEST["motdepasse"];
     $ville=$_REQUEST["ville"];
     $codepostal=$_REQUEST["codepostal"];
-    $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal)");
+    
+    $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
     $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
     $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
     $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
     $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
     $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
     $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
-    $stmt->bindValue('codepostal', $codepostal, PDO::PARAM_STR);
+    $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
     $stmt->execute();
     }
-    
 ?>
 </body>
 </html>

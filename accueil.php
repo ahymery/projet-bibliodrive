@@ -16,10 +16,36 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+  <?php
+  if(isset($_REQUEST['mel'])){
+    require_once('connexion.php');
+    $mel = $_REQUEST['mel'];
+    $motdepasse = $_REQUEST['motdepasse'];
+    
+    $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel= :mel AND motdepasse=:motdepasse");
+    $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
+    $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute();
+    $compte = $stmt->fetch();
+    if (!$compte) {
+     echo 'ca marche pas';}
+     else {
+       $_SESSION['profil'] = $compte->profil;
+       echo 'ca marche';
+     }
+      }
+     ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4 col-md-12">
-        <?php include("entete.html");?>
+        <?php
+          if (isset($_SESSION['profil']) && $_SESSION["profil"] == 'admin'){
+            include 'admin.html';
+          }
+        if (!isset($_SESSION["profil"]) || $_SESSION["profil"] == 'client') {
+          include "entete.html";}
+        ?>
       </div> 
     </div>
     <div class="row">
@@ -27,7 +53,7 @@
         <?php include("carousel.php")?>
       </div>  
       <div class="col-md-4">
-        <?php include("authentification.php");?>
+        <?php include("authentification.php"); ?>
       </div>  
     </div>
 </body>

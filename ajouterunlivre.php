@@ -40,47 +40,75 @@ img {
 </style>
 </head>
 <body>
-    <?php include ('entete.html');?>
+    <?php include ('admin.html'); ?>
 <form method="post">
     <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
-    <label for="auteur" style="margin-left: 550px;">Auteur:</label><br>
-    <input type="text" style="margin-left: 550px;"><br>
+    <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
+   <?php            
+                    require_once('connexion.php');
+                    echo "<select name=\"noauteur\" id=\"auteur\" required style= 'margin-left:550px'>";
+                    echo "<option value=\"\" disabled selected>Sélectionner</option>";
+                    $req = $connexion->query("SELECT noauteur, nom FROM auteur");
+                    $req->setFetchMode(PDO::FETCH_OBJ);
+
+                    while($noauteur = $req->fetch()){
+                        echo "<option value=\"{$noauteur->noauteur}\">{$noauteur->nom}</option>";
+                    }
+
+                    echo "</select>";
+                
+            ?><br>
     <label for="titre" style= "margin-left: 550px;">Titre :</label><br>
     <input type="text" name="titre" style= "margin-left: 550px;"><br>
     <label for="isbn13" style= "margin-left: 550px;">ISBN13 :</label><br>
     <input type="text" name="isbn13" style= "margin-left: 550px;"><br>
     <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
     <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
-    <label for="resume" style= "margin-left: 550px;">Résumé :</label><br>
-    <textarea name="resume" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
+    <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
+    <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
     <label for="dateajout" style= "margin-left: 550px;">Date d'ajout :</label><br>
-    <input type="text" name="dateajout"  style= "margin-left: 550px;"><br>
-    <label for="image" style= "margin-left: 550px;">Image :</label><br>
-    <input type="text" name="image" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
+    <input type="date" name="dateajout"  style= "margin-left: 550px;"><br>
+    <label for="photo" style= "margin-left: 550px;">Image :</label><br>
+    <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
     <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
                 <i class="fas fa-plus"></i> Ajouter un livre
               </button>
 </form>
 </div>  
-<?php    
+<?php
     if (isset($_REQUEST["titre"])) {
     require_once('connexion.php');
+    $noauteur=$_REQUEST['noauteur'];  
     $titre=$_REQUEST['titre'];
     $isbn13=$_REQUEST['isbn13'];
     $anneeparution=$_REQUEST['anneeparution'];
-    $resume=$_REQUEST['resume'];
+    $detail=$_REQUEST['detail'];
     $dateajout=$_REQUEST['dateajout'];
-    $image=$_REQUEST['image'];
+    $photo=$_REQUEST['photo'];
 
-    $stmt = $connexion->prepare("INSERT INTO livre VALUES (':titre', ':isbn13', ':anneeparution', ':resume', ':dateajout', ':image'");
-    $stmt->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $stmt->bindValue(':isbn13', $isbn13, PDO::PARAM_STR);
-    $stmt->bindValue(':anneeparution', $anneeparution, PDO::PARAM_STR);
-    $stmt->bindValue(':resume', $resume, PDO::PARAM_STR);
-    $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_STR);
-    $stmt->bindValue(':image', $image, PDO::PARAM_STR); 
+    // Vérifie d'abord si l'auteur existe dans la base de données
+    $stmt = $connexion->prepare("SELECT * FROM auteur WHERE noauteur = :noauteur");
+    $stmt->bindValue(':noauteur', $noauteur, PDO::PARAM_STR);
     $stmt->execute();
+    $author = $stmt->fetch();
+
+    if ($author) { // Si l'auteur existe il l'insère dans la base de donnée
+
+        $stmt = $connexion->prepare("INSERT INTO livre(noauteur, titre, isbn13, anneeparution, detail, dateajout, photo)
+        VALUES (:noauteur, :titre, :isbn13, :anneeparution, :detail, :dateajout, :photo)");
+
+        $stmt->bindValue(':noauteur', $noauteur, PDO::PARAM_STR);
+        $stmt->bindValue(':titre', $titre, PDO::PARAM_STR);
+        $stmt->bindValue(':isbn13', $isbn13, PDO::PARAM_STR);
+        $stmt->bindValue(':anneeparution', $anneeparution, PDO::PARAM_STR);
+        $stmt->bindValue(':detail', $detail, PDO::PARAM_STR);
+        $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_STR);
+        $stmt->bindValue(':photo', $photo, PDO::PARAM_STR); 
+        $stmt->execute();
+    } else {
+        echo "L'auteur n'existe pas.";
     }
-  ?>
+}
+?>
 </body>
 </html>

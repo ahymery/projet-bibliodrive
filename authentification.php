@@ -34,7 +34,7 @@
   </style>
 </head>
 <body>
-      <form method="post">
+      <form method="post" action="accueil.php">
         <br><h5><strong>SE CONNECTER</strong></h5>
         <p>Adresse Mail</p>
         <input type="email" name="mel" placeholder="Ton mail">
@@ -43,19 +43,25 @@
         <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
     </form>
     <?php
+
+    // RECHERCHE DU MEL ET DU MOT DE PASSE DANS LA BASE SQL 
+    
+    if(isset($_REQUEST['mel'])){
       require_once('connexion.php');
-      $mel = $_POST['mel'];
-      $nom = $_POST['nom'];
-      $prenom = $_POST['prénom'];
-      $motdepasse = $_POST['motdepasse'];
+      $mel = $_REQUEST['mel'];
+      $motdepasse = $_REQUEST['motdepasse'];
       
-      $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel='".$mel." AND motdepasse=".$motdepasse."");
+      $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel=:mel AND motdepasse=:motdepasse");
       $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
       $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
-      $stmt->setfetchmod(PDO::FETCH_OBJ);
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
       $stmt->execute();
+   
+      if(isset($_SESSION['profil'])){
+        $_SESSION['profil'] = $compte->profil;
+        echo 'Bienvenue ', $compte->nom, ' ', $compte->prenom;}    
+    }
 
-      
     ?>
 </body>
 </html>

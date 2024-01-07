@@ -2,7 +2,7 @@
 
 try {
 
-  $dns = 'mysql:host=localhost;dbname=bibliodrive'; 
+  $dns = 'mysql:host=localhost;dbname=projet-bibliodrive'; 
 
   $utilisateur = 'root'; 
 
