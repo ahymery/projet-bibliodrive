@@ -66,8 +66,6 @@ img {
     <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
     <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
     <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
-    <label for="dateajout" style= "margin-left: 550px;">Date d'ajout :</label><br>
-    <input type="date" name="dateajout"  style= "margin-left: 550px;"><br>
     <label for="photo" style= "margin-left: 550px;">Image :</label><br>
     <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
     <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
@@ -83,7 +81,7 @@ img {
     $isbn13=$_REQUEST['isbn13'];
     $anneeparution=$_REQUEST['anneeparution'];
     $detail=$_REQUEST['detail'];
-    $dateajout=$_REQUEST['dateajout'];
+    $dateajout=date("Y-m-d");
     $photo=$_REQUEST['photo'];
 
     // Vérifie d'abord si l'auteur existe dans la base de données
@@ -92,7 +90,7 @@ img {
     $stmt->execute();
     $author = $stmt->fetch();
 
-    if ($author) { // Si l'auteur existe il l'insère dans la base de donnée
+    if ($author) { // Requête pour ajouter les informations du livre dans la bdd SQL
 
         $stmt = $connexion->prepare("INSERT INTO livre(noauteur, titre, isbn13, anneeparution, detail, dateajout, photo)
         VALUES (:noauteur, :titre, :isbn13, :anneeparution, :detail, :dateajout, :photo)");
@@ -105,9 +103,8 @@ img {
         $stmt->bindValue(':dateajout', $dateajout, PDO::PARAM_STR);
         $stmt->bindValue(':photo', $photo, PDO::PARAM_STR); 
         $stmt->execute();
-    } else {
-        echo "L'auteur n'existe pas.";
     }
+
 }
 ?>
 </body>

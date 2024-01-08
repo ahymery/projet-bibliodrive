@@ -19,6 +19,7 @@
       width: 250px;
       margin-left: 370px;
     }
+
  </style>
 </head>
 <body>
@@ -54,7 +55,7 @@
         ?>
       </div> 
     </div>
-    <div class="row">
+    <div class="row" id="center">
       <div class="col-md-8">
         <?php include("carousel.php")?>
       </div>  
