@@ -61,7 +61,13 @@
         $_SESSION['profil'] = $compte->profil;
         echo 'Bienvenue ', $compte->nom, ' ', $compte->prenom;}    
     }
+    if(isset($_SESSION['profil'])){
 
+      echo "<form method='POST' action='accueil.php'>";
+      echo '<br><input type="hidden" name="déconnexion"></input>';
+      echo '<br><button type="submit" class="btn btn-outline-primary btn-sm">Déconnexion</button>';
+      echo '</form>';
+    }
     ?>
 </body>
 </html>

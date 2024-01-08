@@ -42,7 +42,10 @@
        echo 'ca marche';
      }
       }
-     ?>
+    if(isset($_REQUEST['déconnexion'])){
+      session_unset();
+    }
+    ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4 col-md-12">
