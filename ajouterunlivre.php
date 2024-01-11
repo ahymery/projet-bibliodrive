@@ -39,40 +39,6 @@ img {
 
 </style>
 </head>
-<body>
-    <?php include ('admin.html'); ?>
-<form method="post">
-    <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
-    <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
-   <?php            
-                    require_once('connexion.php');
-                    echo "<select name=\"noauteur\" id=\"auteur\" required style= 'margin-left:550px'>";
-                    echo "<option value=\"\" disabled selected>Sélectionner</option>";
-                    $req = $connexion->query("SELECT noauteur, nom FROM auteur");
-                    $req->setFetchMode(PDO::FETCH_OBJ);
-
-                    while($noauteur = $req->fetch()){
-                        echo "<option value=\"{$noauteur->noauteur}\">{$noauteur->nom}</option>";
-                    }
-
-                    echo "</select>";
-                
-            ?><br>
-    <label for="titre" style= "margin-left: 550px;">Titre :</label><br>
-    <input type="text" name="titre" style= "margin-left: 550px;"><br>
-    <label for="isbn13" style= "margin-left: 550px;">ISBN13 :</label><br>
-    <input type="text" name="isbn13" style= "margin-left: 550px;"><br>
-    <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
-    <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
-    <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
-    <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
-    <label for="photo" style= "margin-left: 550px;">Image :</label><br>
-    <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
-    <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
-                <i class="fas fa-plus"></i> Ajouter un livre
-              </button>
-</form>
-</div>  
 <?php
     if (isset($_REQUEST["titre"])) {
     require_once('connexion.php');
@@ -88,9 +54,9 @@ img {
     $stmt = $connexion->prepare("SELECT * FROM auteur WHERE noauteur = :noauteur");
     $stmt->bindValue(':noauteur', $noauteur, PDO::PARAM_STR);
     $stmt->execute();
-    $author = $stmt->fetch();
+    $auteur = $stmt->fetch();
 
-    if ($author) { // Requête pour ajouter les informations du livre dans la bdd SQL
+    if ($auteur) { // Requête pour ajouter les informations du livre dans la base de donnée SQL
 
         $stmt = $connexion->prepare("INSERT INTO livre(noauteur, titre, isbn13, anneeparution, detail, dateajout, photo)
         VALUES (:noauteur, :titre, :isbn13, :anneeparution, :detail, :dateajout, :photo)");
@@ -107,5 +73,61 @@ img {
 
 }
 ?>
+
+<body>
+  <!-- ENTETE -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <?php include ('admin.php'); ?>
+      </div>
+    </div>
+  </div>
+  <!-- CONTENU DE LA PAGE-->
+    <div class="row">
+      <div class="col-md-8">
+        <form method="post">
+          <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
+            <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
+          <?php            
+            require_once('connexion.php');
+            echo "<select name=\"noauteur\" id=\"auteur\" required style= 'margin-left:550px'>";
+            echo "<option value=\"\" disabled selected>Sélectionner</option>";
+            $req = $connexion->query("SELECT noauteur, nom FROM auteur");
+            $req->setFetchMode(PDO::FETCH_OBJ);
+
+            while($noauteur = $req->fetch()){
+            echo "<option value=\"{$noauteur->noauteur}\">{$noauteur->nom}</option>";
+            }
+
+            echo "</select>";
+              ?><br>
+                <label for="titre" style= "margin-left: 550px;">Titre :</label><br>
+                <input type="text" name="titre" style= "margin-left: 550px;"><br>
+                <label for="isbn13" style= "margin-left: 550px;">ISBN13 :</label><br>
+                <input type="text" name="isbn13" style= "margin-left: 550px;"><br>
+                <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
+                <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
+                <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
+                <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
+                <label for="photo" style= "margin-left: 550px;">Image :</label><br>
+                <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
+                <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
+                  <i class="fas fa-plus"></i> Ajouter un livre
+                </button>
+          </form>
+      </div>
+      <!-- FORMULAIRE DE CONNEXION/DECONNEXION -->
+      
+      <div class="col-md-4">
+        <?php 
+         $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel=:mel AND motdepasse=:motdepasse");
+        $compte = $stmt->fetch();
+        $_SESSION['profil'] = $compte->profil;
+        include 'deconnexion.php';
+        ?>
+      </div> 
+    </div>
+  </div>
 </body>
 </html>

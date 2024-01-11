@@ -9,8 +9,9 @@
         <?php
         // Création du formulaire de déconnexion
         $compte = $stmt->fetch();
+        $_SESSION['profil'] = $compte->profil;
+        $_REQUEST['deconnexion'] = session_unset();
         if(isset($_SESSION['profil'])){
-            $_SESSION['profil'] = $compte->profil;
            echo $compte->nom ,' ', $compte->prenom ,'<br>', $compte->mel ,'<br>', $compte->adresse ,' ', $compte->ville ,' ', $compte->codepostal;
            echo '<br><button type="submit" class="btn btn-outline-primary btn-sm">Déconnexion</button>';
         }

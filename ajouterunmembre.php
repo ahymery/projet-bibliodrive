@@ -38,10 +38,13 @@ img {
 </head>
 <body>
   <!-- Include de l'entête sur la page -->
-    <?php include ('admin.html');?>
+    <?php include ('admin.php');?>
 
-  <!-- Formulaire permettant d'ajouter un membre -->
-<form method="post">
+  <!-- Formulaire permettant d'ajouter un membre -->  
+  <div class="row">
+      <div class="col-md-8">
+        <form method="post">
+        <form method="post">
     <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN MEMBRE</strong></h1><br>
     <label for="mel" style="margin-left: 550px;">Mail :</label><br>
     <input type="email" name="mel" style="margin-left: 550px;" placeholder="Mail"><br>
@@ -59,16 +62,22 @@ img {
     <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;">
     <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
                 <i class="fas fa-plus"></i> Ajouter un membre
-              </button>
-</form>
+    </button>
+        </form>
+      </div>
+  <!--Formulaire de déconnexion -->
 
-<br>
-<br>
-<br>
-</div>  
+  <div class="col-md-4">
+    <?php 
+      $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel=:mel AND motdepasse=:motdepasse");
+      $compte = $stmt->fetch();
+      $_SESSION['profil'] = $compte->profil;
+      include 'deconnexion.php';
+    ?>
+</div> 
 
-<!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
 
+  <!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
 <?php    
     if (isset($_REQUEST["nom"])) {
     require_once('connexion.php');

@@ -43,19 +43,19 @@
      }
       }
     if(isset($_REQUEST['déconnexion'])){
-      session_unset();
-    }
+      session_unset();  
+    }   
     ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4 col-md-12">
         <?php
           if (isset($_SESSION['profil']) && $_SESSION["profil"] == 'admin'){
-            include 'admin.html';
+            include 'admin.php';
           }
         if (!isset($_SESSION["profil"]) || $_SESSION["profil"] == 'client') {
           include "entete.html";}
-        ?>
+        ?>          
       </div> 
     </div>
     <div class="row" id="center">
@@ -63,7 +63,16 @@
         <?php include("carousel.php")?>
       </div>  
       <div class="col-md-4">
-        <?php include("authentification.php"); ?>
+        <?php
+        if(!isset($_SESSION['profil'])){
+        include 'authentification.php';
+      }else{
+          $_SESSION['profil'] = $compte->profil;
+          echo $compte->nom ,' ', $compte->prenom ,'<br>', $compte->mel ,'<br>', $compte->adresse ,', ', $compte->ville ,' ', $compte->codepostal;
+          echo '<br><button method="POST" name="déconnexion" type="submit" class="btn btn-outline-primary btn-sm">Déconnexion</button>';
+        }
+        
+      ?>
       </div>  
     </div>
 </body>
