@@ -6,16 +6,13 @@ body {
   background-color: aliceblue;    
 }
 
-a.navbar-brand {
-  height:50px;
-}
 .jumbotron{
   background-color: rgb(62, 131, 249)
  }
  .alert{
       margin-bottom: 0;
  }
-s
+
   .carousel-inner img {   
        width: 100%;
        height: 100%;

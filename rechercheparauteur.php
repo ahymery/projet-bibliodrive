@@ -34,7 +34,7 @@ if (isset($_REQUEST["nom"])) {
 
   $select = $stmt->fetch();
   
-  $_REQUEST['nom'] = $select->nom
+  $_REQUEST['nom'] = $select->nom;
   
   $select = $connexion->query("SELECT * FROM livre 
     INNER JOIN auteur ON (livre.noauteur = auteur.noauteur)

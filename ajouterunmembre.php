@@ -36,6 +36,29 @@ img {
   }
 </style>
 </head>
+    <!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
+  <?php    
+      if (isset($_REQUEST["mel"])) {
+      require_once('connexion.php');
+      $mel=$_REQUEST["mel"];
+      $motdepasse=$_REQUEST["motdepasse"];
+      $nom=$_REQUEST["nom"];
+      $prenom=$_REQUEST["prenom"];
+      $adresse=$_REQUEST["adresse"];
+      $ville=$_REQUEST["ville"];
+      $codepostal=$_REQUEST["codepostal"];
+      
+      $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
+      $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
+      $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+      $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+      $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
+      $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
+      $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
+      $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
+      $stmt->execute();
+      }
+  ?>
 <body>
   <!-- Include de l'entête sur la page -->
     <?php include ('admin.php');?>
@@ -43,7 +66,6 @@ img {
   <!-- Formulaire permettant d'ajouter un membre -->  
   <div class="row">
       <div class="col-md-8">
-        <form method="post">
         <form method="post">
     <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN MEMBRE</strong></h1><br>
     <label for="mel" style="margin-left: 550px;">Mail :</label><br>
@@ -64,6 +86,7 @@ img {
                 <i class="fas fa-plus"></i> Ajouter un membre
     </button>
         </form>
+        </div>
       </div>
   <!--Formulaire de déconnexion -->
 
@@ -77,28 +100,5 @@ img {
 </div> 
 
 
-  <!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
-<?php    
-    if (isset($_REQUEST["nom"])) {
-    require_once('connexion.php');
-    $nom=$_REQUEST["nom"];
-    $prenom=$_REQUEST["prenom"];
-    $adresse=$_REQUEST["adresse"];
-    $mel=$_REQUEST["mel"];
-    $motdepasse=$_REQUEST["motdepasse"];
-    $ville=$_REQUEST["ville"];
-    $codepostal=$_REQUEST["codepostal"];
-    
-    $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
-    $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
-    $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-    $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-    $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
-    $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
-    $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
-    $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-    $stmt->execute();
-    }
-?>
 </body>
 </html>
