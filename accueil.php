@@ -65,6 +65,8 @@
         if(!isset($_SESSION['profil']) || $_SESSION['profil'] == 'client'){
           include("carousel.php");
         }
+
+        
         ?>
       </div>  
       <div class="col-md-4">
