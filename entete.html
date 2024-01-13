@@ -8,7 +8,7 @@
         <strong>Information !</strong> La Bibliothèque de Moulinsart est fermée au public jusqu'à nouvel ordre. Mais il vous est possible de réserver et retirer vos livres via notre service BiblioDrive !
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0; border-radius:0;">
-        <h1>BiblioDrive</h1>
+        <h1>BIBLIODRIVE</h1>
             </div>
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -17,18 +17,22 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                     <ul class="navbar-nav">
+                        <form method="post" action="rechercheparauteur.php">
+                            <li class="nav-item">
+                                <input type="search" name="recherche" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
+                            </li>
+                        </form>
                         <li class="nav-item">
-                            <input type="search" name="recherche" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
-                        </li>
+                                <button type="submit" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </li>
                         <li class="nav-item">
-                            <button type="submit" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-shopping-basket"></i> Panier
-                            </button>
+                            <form method="POST">
+                                <button type="button" name="btn-panier" class="btn btn-outline-light btn-lg">
+                                    <i class="fas fa-shopping-basket"></i> Panier
+                                </button>
+                            </form>
                         </li>
                     </li>   
                 </ul>
@@ -38,4 +42,4 @@
     </div>
 </div>
 </body>
-    </html>
+</html>

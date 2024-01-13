@@ -17,22 +17,13 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                             <ul class="nav-item" style="list-style: none; display: flex;">
                                     <li class="nav-item">
-                                      <form method="POST" action="accueil.php"> 
-                                        <input type="submit" name="montrerajoutmembre" class="btn btn-primary btn-lg">
-                                            <i class="fas fa-user"></i> Créer un membre
-                                        </input>
+                                      <form method="POST"> 
+                                        <input type="submit" name="montrerajoutmembre" class="btn btn-primary btn-lg" value="Ajouter un membre">
                                     </form>
                                     <li class="nav-item">
-                                    <form method="POST" action="accueil.php"> 
-                                        <input type="submit" name="montrerajoutlivre" class="btn btn-primary btn-lg">
-                                            <i class="fas fa-book"></i> Ajouter un livre
-                                        </input>
+                                    <form method="POST"> 
+                                        <input type="submit" name="montrerajoutlivre" class="btn btn-primary btn-lg" value="Ajouter un livre">
                                     </form>
-                                    <li class="nav-item">
-                                        <a href="accueil.php" class="btn btn-primary btn-lg" role="button">
-                                            <i class="fas fa-arrow-right"></i> Retour a l'accueil   
-                                        </a>
-                                    </a>
                                 </li>
                             </li>   
                         </ul>

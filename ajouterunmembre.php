@@ -60,14 +60,13 @@ img {
       }
   ?>
 <body>
-  <!-- Include de l'entête sur la page -->
-    <?php include ('admin.php');?>
 
   <!-- Formulaire permettant d'ajouter un membre -->  
+
   <div class="row">
       <div class="col-md-8">
         <form method="post">
-    <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN MEMBRE</strong></h1><br>
+    <br><h1 style= "padding-left: 550px;"><strong>AJOUTER UN MEMBRE</strong></h1><br>
     <label for="mel" style="margin-left: 550px;">Mail :</label><br>
     <input type="email" name="mel" style="margin-left: 550px;" placeholder="Mail"><br>
     <label for="motdepasse" style= "margin-left: 550px;">Mot de passe :</label><br>
@@ -76,29 +75,17 @@ img {
     <input type="text" name="nom" style= "margin-left: 550px;" placeholder="Nom"><br>
     <label for="prenom" style= "margin-left: 550px;">Prénom :</label><br>
     <input type="text" name="prenom" style= "margin-left: 550px;" placeholder="Prénom"><br>
-    <label for="adresse" style= "margin-left: 550px;">Adresse Postale :</label><br>
+    <label for="adresse" style= "margin-left: 550px;">Adresse :</label><br>
     <input type="text" name="adresse" placeholder="Adresse" style= "margin-left: 550px;"></input><br>
     <label for="ville" style= "margin-left: 550px;">Ville :</label><br>
     <input type="text" name="ville"  style= "margin-left: 550px;" placeholder="Ville"><br>
     <label for="codepostal" style= "margin-left: 550px;">Code postal :</label><br>
-    <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;">
-    <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
+    <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;"><br>
+    <button type="submit" class="btn btn-outline-primary btn-sm" name="add" style= "margin-left: 100px;">
                 <i class="fas fa-plus"></i> Ajouter un membre
     </button>
         </form>
         </div>
       </div>
-  <!--Formulaire de déconnexion -->
-
-  <div class="col-md-4">
-    <?php 
-      $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel=:mel AND motdepasse=:motdepasse");
-      $compte = $stmt->fetch();
-      $_SESSION['profil'] = $compte->profil;
-      include 'deconnexion.php';
-    ?>
-</div> 
-
-
 </body>
 </html>

@@ -25,16 +25,7 @@ img {
 
  }
 
-  .carousel-inner img {   
-       width: 100%;
-       height: 100%;
-  }
-
-  input[type="search"] {
-      padding: 12px 15px;
-      border-radius: 15px;
-      border-color: #046aaa;
-  }
+ .
   
 
 </style>
@@ -75,15 +66,8 @@ img {
 ?>
 
 <body>
-  <!-- ENTETE -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <?php include ('admin.php'); ?>
-      </div>
-    </div>
-  </div>
   <!-- CONTENU DE LA PAGE-->
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-8">
         <form method="post">
@@ -117,16 +101,6 @@ img {
                 </button>
           </form>
       </div>
-      <!-- FORMULAIRE DE CONNEXION/DECONNEXION -->
-      
-      <div class="col-md-4">
-        <?php 
-         $stmt = $connexion->prepare("SELECT * FROM utilisateur WHERE mel=:mel AND motdepasse=:motdepasse");
-        $compte = $stmt->fetch();
-        $_SESSION['profil'] = $compte->profil;
-        include 'deconnexion.php';
-        ?>
-      </div> 
     </div>
   </div>
 </body>

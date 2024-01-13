@@ -21,6 +21,12 @@
       margin-left: 370px;
     }
 
+    input[name=btn-deco]{
+      margin-left: 190px !important;
+      margin-top: 5px !important;
+    }
+
+
  </style>
 </head>
 <body>
@@ -40,7 +46,6 @@
      echo 'ca marche pas';}
      else {
        $_SESSION['profil'] = $compte->profil;
-       echo 'ca marche';
      }
       }
     if(isset($_POST['btn-deco'])){
@@ -63,21 +68,26 @@
       <div class="col-md-8">
         <?php 
         if(!isset($_SESSION['profil']) || $_SESSION['profil'] == 'client'){
-          include("carousel.php");
+          include "carousel.php";
+        }elseif(isset($_POST['montrerajoutlivre'])){
+          include 'ajouterunlivre.php';
+        }elseif(isset($_POST['montrerajoutmembre'])){
+          include 'ajouterunmembre.php';
+        }elseif(isset($_POST['montrerajoutauteur'])){
+          include 'ajouterunauteur.php';
+        }elseif(isset($_POST['btn-src'])){
+          include 'rechercheparauteur.php';
         }
-
-        
         ?>
       </div>  
       <div class="col-md-4">
         <?php
         if(!isset($_SESSION['profil'])){
         include 'authentification.php';
-      }else{
-          $_SESSION['profil'] = $compte->profil;
-          echo '<form method="POST" action="accueil.php">';
-          echo '<br><strong>BIENVENUE' , ' ', $compte->prenom ,' ', $compte->nom ,'</strong> <br> ', $compte->mel ,'<br> ', $compte->adresse ,' <br> ', $compte->codepostal ,' ', $compte->ville;
-          echo '<br><input type="submit" name="btn-deco" value="Déconnexion" class="btn btn-outline-primary btn-sm"></input>';
+      }elseif(isset($_SESSION['profil'])){
+          echo '<form method="POST">';
+          echo '<br><h3 style="text-align: center;"><strong>Bienvenue </strong>',' ', $compte->nom ,' ', $compte->prenom ,'</h3>  ', '<h4 style="text-align: center;">' ,'<br> ', $compte->mel ,'<br> ', $compte->adresse, '<br> ', $compte->ville, ' ', $compte->codepostal ,'</h4>';
+          echo '<br><input type="submit" name="btn-deco" value="Déconnexion" class="btn btn-outline-primary btn-md"></input>';
           echo '</form>';
         }            
       ?>

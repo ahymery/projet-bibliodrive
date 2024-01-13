@@ -36,11 +36,10 @@
     $conn->close();
  ?>
 </div>
-
-  <a class="carousel-control-prev" href="#livres" data-slide="prev">
+  <a class="carousel-control-prev" href="#livres" data-slide="prev" style="background: black; margin-left: 15px;">
     <span class="carousel-control-prev-icon"></span>
   </a>
-  <a class="carousel-control-next" href="#livres" data-slide="next">
+  <a class="carousel-control-next" href="#livres" data-slide="next" style="background: black;">
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>

@@ -17,46 +17,22 @@
     ?>
 
 <?php
+  // Connexion à la base de données MySQL 
+    require_once('connexion.php');
 
-// Connexion à la base de données MySQL 
+    // Envoi de la requête vers MySQL
+    if (isset($_POST["recherche"])) {
 
-require_once('connexion.php');
+      $select = $connexion->query("SELECT * FROM livre");
 
-// Envoi de la requête vers MySQL
-if (isset($_REQUEST["nom"])) {
-  $nomrecherché=$_REQUEST['nom'];
+      $select->setFetchMode(PDO::FETCH_OBJ);
 
-  $stmt->bindValue(':nomrecherché', $nomrecherché, PDO::PARAM_STR);
-
-  $stmt = $connexion->prepare("SELECT * FROM auteur WHERE nom = :nomrecherché");
-
-  $stmt->execute();
-
-  $select = $stmt->fetch();
-  
-  $_REQUEST['nom'] = $select->nom;
-  
-  $select = $connexion->query("SELECT * FROM livre 
-    INNER JOIN auteur ON (livre.noauteur = auteur.noauteur)
-    WHERE auteur.nom LIKE '.%$nomrecherché%.' 
-    ");
-}
-
-// Les résultats retournés par la requête seront traités en 'mode' objet
-
-$select->setFetchMode(PDO::FETCH_OBJ);
-
-// Parcours des enregistrements retournés par la requête : premier, deuxième…
-
-while($enregistrement = $select->fetch())
-
-{
-
-  // Affichage du champ  détail de la table 'livre'
-
-  echo "<a href='#'>', $enregistrement->titre'</a>";  
-}
-
+    while($enregistrement = $select->fetch()){
+       echo '<form method="GET">';
+       echo '<a nom="detaillivre" href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
+       echo '</form>';
+      } 
+    }
 ?>
-</body>
+  </body>
 </html>
