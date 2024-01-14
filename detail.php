@@ -16,27 +16,34 @@
         include 'entete.html';
     ?>
     <?php
- // Connexion à la base de données MySQL 
-    require_once('connexion.php');
+// Connexion à la base de données MySQL 
+require_once('connexion.php');
 
-    // Envoi de la requête vers MySQL
-    if (isset($_GET["nolivre"])) {
+// Envoi de la requête vers MySQL
+if(isset($_GET["livre"])) {
+ $livre = $_GET["livre"];
 
-      $select = $connexion->query("SELECT * FROM livre WHERE nolivre =".$_GET["nolivre"]);
-
-      $select->setFetchMode(PDO::FETCH_OBJ);
-
-      while($enregistrement = $select->fetch()){
-        echo '<form method="POST">';
-        echo '<label>Titre:</label> ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '<br>';
-        echo '<label>Auteur:</label> ', $enregistrement->auteur ,'<br>';
-        echo '<label>Editeur:</label> ', $enregistrement->editeur ,'<br>';
-        echo '<label>ISBN:</label> ', $enregistrement->isbn ,'<br>';
-        echo '</form>';
-      } 
-    }
+ $select = $connexion->prepare("SELECT * FROM livre
+ INNER JOIN auteur ON livre.noauteur = auteur.noauteur
+ WHERE livre.nolivre LIKE :livre   
+ ");
+ $select->bindValue(":livre", '%'.$livre.'%');
+ $select->setFetchMode(PDO::FETCH_OBJ);
+ $select->execute();
+  
+ while($enregistrement = $select->fetch()){
+    echo '<label>Titre:</label> ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '<br>';
+    echo '<label>Auteur:</label> ', $enregistrement->auteur ,'<br>';
+    echo '<label>Editeur:</label> ', $enregistrement->editeur ,'<br>';
+    echo '<label>ISBN-13:</label> ', $enregistrement->isbn13 ,'<br>';
+    echo '<img src=', $enregistrement->photo, '/>';
+ } 
+} else {
+ echo "Error: Undefined array key 'livre'.";
+}
 ?>
     <form method="POST">
         <input type="button" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>
+  </form>
 </body>
 </html>

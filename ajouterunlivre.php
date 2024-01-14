@@ -24,8 +24,6 @@ img {
       margin-bottom: 0;
 
  }
-
- .
   
 
 </style>
@@ -66,6 +64,14 @@ img {
 ?>
 
 <body>
+  <!-- ENTETE -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-12">
+        <?php include 'admin.php'; ?>
+      </div>  
+    </div>
+</div> 
   <!-- CONTENU DE LA PAGE-->
   <div class="container-fluid">
     <div class="row">
@@ -76,7 +82,7 @@ img {
           <?php            
             require_once('connexion.php');
             echo "<select name=\"noauteur\" id=\"auteur\" required style= 'margin-left:550px'>";
-            echo "<option value=\"\" disabled selected>Sélectionner</option>";
+            echo "<option value=\"\" disabled selected>Sélectionner auteur</option>";
             $req = $connexion->query("SELECT noauteur, nom FROM auteur");
             $req->setFetchMode(PDO::FETCH_OBJ);
 

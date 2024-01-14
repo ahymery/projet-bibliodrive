@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BiblioDrive</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -21,17 +21,22 @@
     require_once('connexion.php');
 
     // Envoi de la requête vers MySQL
-    if (isset($_POST["recherche"])) {
-
-      $select = $connexion->query("SELECT * FROM livre");
-
+    if ($auteur = $_GET["recherche"]) {
+      
+      $select = $connexion->prepare("SELECT * FROM livre
+                                     INNER JOIN auteur ON livre.noauteur = auteur.noauteur
+                                     WHERE auteur.nom LIKE :auteur
+                                    ");
+      $select->bindValue(":auteur", '%'.$auteur.'%');
       $select->setFetchMode(PDO::FETCH_OBJ);
+      $select->execute();
 
     while($enregistrement = $select->fetch()){
        echo '<form method="GET">';
-       echo '<a nom="detaillivre" href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
+       echo '<a href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'" name="livre">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
        echo '</form>';
       } 
+
     }
 ?>
   </body>

@@ -17,16 +17,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                     <ul class="navbar-nav">
-                        <form method="post" action="rechercheparauteur.php">
+                        <form method="get" action="rechercheparauteur.php">
                             <li class="nav-item">
                                 <input type="search" name="recherche" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
+                                <input type="submit" class="btn btn-outline-light btn-lg" value="Recherche"></input>
                             </li>
                         </form>
-                        <li class="nav-item">
-                                <button type="submit" class="btn btn-outline-light btn-lg">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </li>
                         <li class="nav-item">
                             <form method="POST">
                                 <button type="button" name="btn-panier" class="btn btn-outline-light btn-lg">

@@ -73,8 +73,6 @@
           include 'ajouterunlivre.php';
         }elseif(isset($_POST['montrerajoutmembre'])){
           include 'ajouterunmembre.php';
-        }elseif(isset($_POST['montrerajoutauteur'])){
-          include 'ajouterunauteur.php';
         }elseif(isset($_POST['btn-src'])){
           include 'rechercheparauteur.php';
         }
@@ -89,7 +87,8 @@
           echo '<br><h3 style="text-align: center;"><strong>Bienvenue </strong>',' ', $compte->nom ,' ', $compte->prenom ,'</h3>  ', '<h4 style="text-align: center;">' ,'<br> ', $compte->mel ,'<br> ', $compte->adresse, '<br> ', $compte->ville, ' ', $compte->codepostal ,'</h4>';
           echo '<br><input type="submit" name="btn-deco" value="Déconnexion" class="btn btn-outline-primary btn-md"></input>';
           echo '</form>';
-        }            
+      }
+                 
       ?>
       </div>  
     </div>

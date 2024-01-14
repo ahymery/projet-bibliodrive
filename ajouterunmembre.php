@@ -60,7 +60,14 @@ img {
       }
   ?>
 <body>
-
+  <!-- ENTETE -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-12">
+        <?php include 'admin.php'; ?>
+      </div>  
+    </div>
+</div> 
   <!-- Formulaire permettant d'ajouter un membre -->  
 
   <div class="row">
@@ -85,7 +92,7 @@ img {
                 <i class="fas fa-plus"></i> Ajouter un membre
     </button>
         </form>
-        </div>
-      </div>
+    </div>
+    </div>
 </body>
 </html>

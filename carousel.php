@@ -16,16 +16,19 @@
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verification de la connexion
+  // Verification de la connexion
+  
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
+
+  //  REQUETE SQL PERMETTANT DE TROUVER LA COVER D'UN LIVRE 
 
     $sql = "SELECT nolivre, titre, photo FROM livre ORDER BY nolivre DESC LIMIT 5";
     $result = $conn->query($sql);
     $count = 0;
     if ($result->num_rows > 0) {
-      
+        
       while($row = $result->fetch_assoc()) {
         echo "<div class='carousel-item".($count == 0 ? " active" : "")."'><img src='covers/".$row["photo"]."' alt='".$row["titre"]."'></div>";
         $count++;

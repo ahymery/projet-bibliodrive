@@ -17,13 +17,23 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                             <ul class="nav-item" style="list-style: none; display: flex;">
                                     <li class="nav-item">
-                                      <form method="POST"> 
-                                        <input type="submit" name="montrerajoutmembre" class="btn btn-primary btn-lg" value="Ajouter un membre">
+                                      <form method="POST" action="ajouterunmembre.php"> 
+                                        <input type="submit" name="ajoutmembre" class="btn btn-primary btn-lg" value="Ajouter un membre">
                                     </form>
                                     <li class="nav-item">
-                                    <form method="POST"> 
-                                        <input type="submit" name="montrerajoutlivre" class="btn btn-primary btn-lg" value="Ajouter un livre">
+                                    <form method="POST"  action="ajouterunlivre.php"> 
+                                        <input type="submit" name="ajoutlivre" class="btn btn-primary btn-lg" value="Ajouter un livre">
                                     </form>
+
+                                    <?php 
+                                     if(isset($_POST['ajoutlivre']) || isset($_POST['ajoutmembre'])){
+                                         echo '<li class="nav-item">
+                                         <form action="accueil.php">
+                                         <input type="submit" class="btn btn-primary btn-lg" value="Accueil"></input>
+                                         </form>
+                                         </li>'; 
+                                    }
+                                    ?>
                                 </li>
                             </li>   
                         </ul>
