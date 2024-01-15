@@ -54,7 +54,7 @@
     ?>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 col-md-12">
+      <div class="col-sm-8 col-md-12">
         <?php
           if (isset($_SESSION['profil']) && $_SESSION["profil"] == 'admin'){
             include 'admin.php';
@@ -65,9 +65,11 @@
       </div> 
     </div>
     <div class="row" id="center">
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-8">
+
         <?php 
         if(!isset($_SESSION['profil']) || $_SESSION['profil'] == 'client'){
+          echo '<br><h1 style="margin-left: 300px;"><strong>Dernières Acquisitions</strong></h1><br>';
           include "carousel.php";
         }elseif(isset($_POST['montrerajoutlivre'])){
           include 'ajouterunlivre.php';

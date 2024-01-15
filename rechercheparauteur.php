@@ -30,13 +30,13 @@
       $select->bindValue(":auteur", '%'.$auteur.'%');
       $select->setFetchMode(PDO::FETCH_OBJ);
       $select->execute();
-
-    while($enregistrement = $select->fetch()){
-       echo '<form method="GET">';
-       echo '<a href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'" name="livre">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
-       echo '</form>';
-      } 
-
+      
+     while($enregistrement = $select->fetch()){
+      echo '<form method="GET">';
+      echo '<br><a href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'" style="margin-left: 250px;">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
+      echo '</form>';
+     }
+     
     }
 ?>
   </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BiblioDrive</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -20,10 +20,9 @@
 require_once('connexion.php');
 
 // Envoi de la requête vers MySQL
-if(isset($_GET["livre"])) {
- $livre = $_GET["livre"];
+if($_POST["livre"]) {
 
- $select = $connexion->prepare("SELECT * FROM livre
+$select = $connexion->prepare("SELECT * FROM livre
  INNER JOIN auteur ON livre.noauteur = auteur.noauteur
  WHERE livre.nolivre LIKE :livre   
  ");
@@ -32,14 +31,14 @@ if(isset($_GET["livre"])) {
  $select->execute();
   
  while($enregistrement = $select->fetch()){
+    echo '<img src=', $enregistrement->photo, '/>';
     echo '<label>Titre:</label> ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '<br>';
     echo '<label>Auteur:</label> ', $enregistrement->auteur ,'<br>';
     echo '<label>Editeur:</label> ', $enregistrement->editeur ,'<br>';
     echo '<label>ISBN-13:</label> ', $enregistrement->isbn13 ,'<br>';
-    echo '<img src=', $enregistrement->photo, '/>';
  } 
 } else {
- echo "Error: Undefined array key 'livre'.";
+ echo "Erreur la variable 'livre' n'est pas définie";
 }
 ?>
     <form method="POST">
