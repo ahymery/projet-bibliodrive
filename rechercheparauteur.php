@@ -13,10 +13,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-md-12">
     <?php
         include 'entete.html';
     ?>
-
+  </div>
+</div>
+</div>
 <?php
   // Connexion à la base de données MySQL 
     require_once('connexion.php');
@@ -31,13 +36,14 @@
       $select->bindValue(":auteur", '%'.$auteur.'%');
       $select->setFetchMode(PDO::FETCH_OBJ);
       $select->execute();
-      
-     while($enregistrement = $select->fetch()){
-      echo '<form method="GET">';
-      echo '<br><a href="http://localhost/projet-bibliodrive/detail.php?nolivre='.$enregistrement->nolivre.'" style="margin-left: 250px;">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
-      echo '</form>';
-     }
-     
+      while($enregistrement = $select->fetch()){
+        echo '<form method="GET">';
+        echo '<br><a href="http://localhost/projet-bibliodrive/detail.php?nolivre='.$enregistrement->nolivre.'" style="margin-left: 250px;">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
+        echo '</form>';
+      }
+    } 
+    if($enregistrement <> $select->fetch()){
+      echo 'Aucun résultats.';
     }
 ?>
   </body>

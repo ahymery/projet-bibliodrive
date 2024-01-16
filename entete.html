@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <style>
+        input[name="btn-src"]{
+            margin-bottom: 15px;
+        }
+
+        button[name="btn-panier"]{
+            margin-bottom: 15px;
+            margin-right: 300px;
+        }
+    </style>
 </head>
 <body>
     <div class="alert alert-warning text-center" id="alert">
         <strong>Information !</strong> La Bibliothèque de Moulinsart est fermée au public jusqu'à nouvel ordre. Mais il vous est possible de réserver et retirer vos livres via notre service BiblioDrive !
     </div>
-    <div class="jumbotron text-center" style="margin-bottom:0; border-radius:0;">
-        <h1>BIBLIODRIVE</h1>
-            </div>
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <a class="navbar-brand" href="accueil.php"><img src="images/favicon.png"></a>
@@ -20,7 +28,7 @@
                         <form method="get" action="rechercheparauteur.php">
                             <li class="nav-item">
                                 <input type="search" name="recherche" placeholder="Rechercher dans le catalogue (saisie du nom de l'auteur)" size="60%">
-                                <input type="submit" class="btn btn-outline-light btn-lg" value="Recherche"></input>
+                                <input type="submit" name="btn-src" class="btn btn-outline-light btn-lg" value="&#128270 Recherche"></input>
                                 <button type="button" name="btn-panier" class="btn btn-outline-light btn-lg">
                                     <i class="fas fa-shopping-basket"></i> Panier
                                 </button>

@@ -1,3 +1,4 @@
+<?php session_start() ?>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         #covers {
-         margin-left: 1000px;
+         margin-left: 750px;
          margin-top: 10px;
          margin-bottom: 10px;
          width: 350px;
@@ -41,54 +42,78 @@
           margin-top: -70px;
         }
         h2{
-            margin-left: 175px;
+            margin-left: 150px;
             margin-top: -100px;
             color: red;
         }
         #resume {
             text-align: center;
             margin-left: 15px;
-            margin-right: 1000px;
+            margin-right: 500px;
             margin-bottom: 25px;
         }
 
         form[name="btn-panier"]{
-            margin-left: 150px;
+            margin-left: 250px;
+        }
+        
+        .resume{
+            margin-top: -150px;
+        }    
+
+        h5{
+            margin-left: 50px;
         }
     </style>
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 col-md-12">
     <?php
         include 'entete.html';
     ?>
+    </div>
+  </div>
+ <div class="row">
+    <div class="col-md-8">
     <?php
-// Connexion à la base de données MySQL 
-require_once('connexion.php');
+    // Connexion à la base de données MySQL 
+    require_once('connexion.php');
 
-// Envoi de la requête vers MySQL
-if(isset($_GET["nolivre"])) {
+    // Envoi de la requête vers MySQL
+    if(isset($_GET["nolivre"])) {
 
-$select = $connexion->prepare("SELECT * FROM livre
- INNER JOIN auteur ON livre.noauteur = auteur.noauteur
- WHERE livre.nolivre LIKE :livre   
- ");
- $select->bindValue(":livre", $_GET['nolivre'], PDO::PARAM_STR);
- $select->setFetchMode(PDO::FETCH_OBJ);
- $select->execute();
+    $select = $connexion->prepare("SELECT * FROM livre
+    INNER JOIN auteur ON livre.noauteur = auteur.noauteur
+    WHERE livre.nolivre LIKE :livre");
+     $select->bindValue(":livre", $_GET['nolivre'], PDO::PARAM_STR);
+    $select->setFetchMode(PDO::FETCH_OBJ);
+    $select->execute();
   
- while($enregistrement = $select->fetch()){
-     echo '<img id="covers" src="covers/', $enregistrement->photo, '"/>';
-     echo '<h3 id="titre">Titre : ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</h3><br>';
-     echo '<h3 id="auteur">Auteur : ', $enregistrement->nom ,'</h3><br>';
-     echo '<h3 id="isbn13">ISBN-13 : ', $enregistrement->isbn13 ,'</h3><br>';
-     echo '<h2>Résumé du livre : </h2>', '<p id="resume">', $enregistrement->detail ,'</p>';
- } 
-} else {
- echo "Erreur la variable 'livre' n'est pas définie";
-}
-?>
-    <form method="POST" name="btn-panier">
-        <input type="button" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>
-  </form>
+    while($enregistrement = $select->fetch()){
+         echo '<img id="covers" src="covers/', $enregistrement->photo, '"/>';
+        echo '<h3 id="titre">Titre : ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</h3><br>';
+        echo '<h3 id="auteur">Auteur : ', $enregistrement->prenom ,' ', $enregistrement->nom ,'</h3><br>';
+        echo '<h3 id="isbn13">ISBN-13 : ', $enregistrement->isbn13 ,'</h3><br>';
+        echo '<div class="resume">';
+        echo '<h2>Résumé du livre : </h2>', '<p id="resume">', $enregistrement->detail ,'</p>';
+        echo '</div>';
+        } 
+    } 
+    ?>
+    <?php
+    if(!$_SESSION == 'client'){ 
+        echo '<h5>Veuillez vous connecter pour emprunter un livre.</h5>';
+    }else{
+        echo '<form method="POST">';
+        echo '<input type="button" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
+        echo '</form>';
+    }
+    ?>
+  </div>
+</div>
+</div> 
+</div>
 </body>
 </html>

@@ -26,9 +26,9 @@
 
       "orientation": "middle", /* Position de la bannière (top - bottom) */
 
-      "showAlertSmall": true, /* Voir la bannière réduite en bas à droite */
+      "showAlertSmall": false, /* Voir la bannière réduite en bas à droite */
 
-      "cookieslist": true, /* Voir la liste des cookies */
+      "cookieslist": false, /* Voir la liste des cookies */
 
       "adblocker": false, /* Voir une alerte si un bloqueur de publicités est détecté */
 
@@ -60,8 +60,8 @@
       }
       
       input[name=btn-deco]{
-        margin-left: 200px !important;
-        margin-top: 5px !important;
+        margin-left: 180px !important;
+        margin-top: 0 !important;
       }
       
       </style>
@@ -81,7 +81,7 @@
     $stmt->execute();
     $_SESSION['compte'] = $stmt->fetch();
     if (!$_SESSION['compte']) {
-     echo 'ca marche pas';}
+     echo '';}
      else {
        $_SESSION['profil'] =  $_SESSION['compte']->profil;
      }
@@ -107,7 +107,7 @@
 
         <?php 
         if(!isset($_SESSION['profil']) || $_SESSION['profil'] == 'client'){
-          echo '<br><h1 style="margin-left: 300px;"><strong>Dernières Acquisitions</strong></h1><br>';
+          echo '<br><h1 style="margin-left: 300px;">&#128214<strong>Dernières Acquisitions</strong>&#128214</h1><br>';
           include "carousel.php";
         }elseif(isset($_POST['montrerajoutlivre'])){
           include 'ajouterunlivre.php';
@@ -115,6 +115,8 @@
           include 'ajouterunmembre.php';
         }elseif(isset($_POST['btn-src'])){
           include 'rechercheparauteur.php';
+        }else{
+          echo '<h1 style="text-align: center;">Tu es <strong>Administrateur</strong></h1>';
         }
         ?>
       </div>  
@@ -125,7 +127,7 @@
       }elseif(isset($_SESSION['profil'])){
           echo '<form method="POST">';
           echo '<br><h3 style="text-align: center;"><strong>Bienvenue </strong>',' ',  $_SESSION['compte']->nom ,' ', $_SESSION['compte']->prenom ,'</h3>  ', '<h4 style="text-align: center;">' ,'<br> ',  $_SESSION['compte']->mel ,'<br> ',  $_SESSION['compte']->adresse, '<br> ',  $_SESSION['compte']->ville, ' ',  $_SESSION['compte']->codepostal ,'</h4>';
-          echo '<br><input type="submit" name="btn-deco" value="Déconnexion" class="btn btn-outline-primary btn-md"></input>';
+          echo '<br><input type="submit" name="btn-deco" value="&#128274 Déconnexion" class="btn btn-primary btn-md"></input>';
           echo '</form>';
       }
                  

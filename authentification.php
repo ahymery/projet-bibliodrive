@@ -31,16 +31,17 @@
         border-radius: 15px;
         border-color: #046aaa;
     }   
+
   </style>
 </head>
 <body>
       <form method="post" action="accueil.php">
-        <br><h5><strong>SE CONNECTER</strong></h5>
+        <br><h5><strong>CONNEXION</strong></h5>
         <p>Adresse Mail</p>
-        <input type="email" name="mel" placeholder="Ton mail">
+        <input type="email" name="mel" placeholder="Mail">
         <p>Mot de Passe</p>
-        <input type="password" name="motdepasse" placeholder="Ton Mot de passe">
-        <br><button type="submit" class="btn btn-outline-primary btn-sm">Connexion</button>
+        <input type="password" name="motdepasse" placeholder="Mot de Passe">
+        <br><button type="submit" class="btn btn-primary btn-sm"> &#128275 Connexion</button>
     </form>
     <?php
 
@@ -56,11 +57,11 @@
       $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
       $stmt->setFetchMode(PDO::FETCH_OBJ);
       $stmt->execute();
-   
-      if(isset($_SESSION['profil'])){
-        $_SESSION['profil'] =  $_SESSION['compte']->profil;
-        echo 'Bienvenue ',  $_SESSION['compte']->prenom, ' ',  $_SESSION['compte']->nom;}  
+      
+      if($_REQUEST['mel'] <> $stmt || $_REQUEST['motdepasse'] <> $stmt){
+        echo 'Mel ou mot de passe incorrect';
       }
+    }
     ?>
 </body>
 </html>

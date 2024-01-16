@@ -19,11 +19,14 @@
                             <ul class="nav-item" style="list-style: none; display: flex;">
                                     <li class="nav-item">
                                       <form method="POST" action="ajouterunmembre.php"> 
-                                        <input type="submit" name="ajoutmembre" class="btn btn-primary btn-lg" value="Ajouter un membre">
-                                    </form>
+                                      <button type="submit" name="ajoutmembre" class="btn btn-primary btn-lg">
+                                            <i class="fas fa-user"></i> Ajouter un membre
+                                        </button>                                    </form>
                                     <li class="nav-item">
                                     <form method="POST"  action="ajouterunlivre.php"> 
-                                        <input type="submit" name="ajoutlivre" class="btn btn-primary btn-lg" value="Ajouter un livre">
+                                        <button type="submit" name="ajoutlivre" class="btn btn-primary btn-lg">
+                                            <i class="fas fa-book"></i> Ajouter un livre
+                                        </button>
                                     </form>
 
                                     <?php 
