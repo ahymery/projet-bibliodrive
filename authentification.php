@@ -14,7 +14,7 @@
     height:50px;
   }
   .jumbotron{
-    background-color: rgb(62, 131, 249)
+    background-color: #007BFF;
    }
    .alert{
         margin-bottom: 0;
@@ -58,11 +58,9 @@
       $stmt->execute();
    
       if(isset($_SESSION['profil'])){
-        $_SESSION['profil'] = $compte->profil;
-        echo 'Bienvenue ', $compte->prenom, ' ', $compte->nom;}  
-      
-          
-    }
+        $_SESSION['profil'] =  $_SESSION['compte']->profil;
+        echo 'Bienvenue ',  $_SESSION['compte']->prenom, ' ',  $_SESSION['compte']->nom;}  
+      }
     ?>
 </body>
 </html>

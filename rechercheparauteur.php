@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioDrive</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -33,7 +34,7 @@
       
      while($enregistrement = $select->fetch()){
       echo '<form method="GET">';
-      echo '<br><a href="http://localhost/projet-bibliodrive/detail.php?nolivre ='.$enregistrement->nolivre.'" style="margin-left: 250px;">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
+      echo '<br><a href="http://localhost/projet-bibliodrive/detail.php?nolivre='.$enregistrement->nolivre.'" style="margin-left: 250px;">', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</a><br>';
       echo '</form>';
      }
      

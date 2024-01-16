@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
   <title>BiblioDrive</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,40 +13,43 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-img {
-  height:50px;
-}
-.jumbotron{
-  background-color: rgb(62, 131, 249)
- }
+    img {
+      height:50px;
+    }
+    .jumbotron{
+      background-color: rgb(62, 131, 249)
+    }
  .alert{
-      margin-bottom: 0;
-
- }
-
-  .carousel-inner img {   
-       width: 100%;
-       height: 100%;
+   margin-bottom: 0;
+   
   }
-
+  
+  .carousel-inner img {   
+    width: 100%;
+    height: 100%;
+  }
+  
   input[type="search"] {
       padding: 12px 15px;
       border-radius: 15px;
       border-color: #046aaa;
-  }
-</style>
+    }
+  </style>
 </head>
-    <!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
-  <?php    
+<!-- Requête PHP permettant l'ajout du membre dans la base de donnée SQL -->
+<?php session_start();?>
+<?php    
       if (isset($_REQUEST["mel"])) {
-      require_once('connexion.php');
-      $mel=$_REQUEST["mel"];
-      $motdepasse=$_REQUEST["motdepasse"];
-      $nom=$_REQUEST["nom"];
-      $prenom=$_REQUEST["prenom"];
-      $adresse=$_REQUEST["adresse"];
-      $ville=$_REQUEST["ville"];
-      $codepostal=$_REQUEST["codepostal"];
+        require_once('connexion.php');
+        $mel=$_REQUEST["mel"];
+        $motdepasse=$_REQUEST["motdepasse"];
+        $nom=$_REQUEST["nom"];
+        $prenom=$_REQUEST["prenom"];
+        $adresse=$_REQUEST["adresse"];
+        $ville=$_REQUEST["ville"];
+        $codepostal=$_REQUEST["codepostal"];
+        $mdp_bdd = password_hash($motdepasse, PASSWORD_ARGON2I);
+        
       
       $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
       $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
@@ -57,8 +60,8 @@ img {
       $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
       $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
       $stmt->execute();
-      }
-  ?>
+    }
+    ?>
 <body>
   <!-- ENTETE -->
   <div class="container-fluid">
@@ -67,9 +70,9 @@ img {
         <?php include 'admin.php'; ?>
       </div>  
     </div>
-</div> 
+  </div> 
   <!-- Formulaire permettant d'ajouter un membre -->  
-
+  
   <div class="row">
       <div class="col-md-8">
         <form method="post">

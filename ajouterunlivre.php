@@ -28,8 +28,9 @@ img {
 
 </style>
 </head>
+<?php session_start();?>
 <?php
-    if (isset($_REQUEST["titre"])) {
+  if (isset($_REQUEST["titre"])) {
     require_once('connexion.php');
     $noauteur=$_REQUEST['noauteur'];  
     $titre=$_REQUEST['titre'];
