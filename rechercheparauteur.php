@@ -11,6 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      input[name=btn-deco]{
+    margin-left: 180px !important;
+    margin-top: 0 !important;
+    }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -22,6 +28,8 @@
   </div>
 </div>
 </div>
+<div class="row">
+  <div class="col-md-8">
 <?php
   // Connexion à la base de données MySQL 
     require_once('connexion.php');
@@ -46,5 +54,11 @@
       echo 'Aucun résultats.';
     }
 ?>
+</div>
+<div class="col-md-4">
+  <?php
+  session_start(); 
+  include 'deconnexion.php';
+   ?>
   </body>
 </html>

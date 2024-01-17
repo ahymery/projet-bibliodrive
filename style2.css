@@ -6,9 +6,6 @@ body {
   background-color: aliceblue;    
 }
 
-.jumbotron{
-  background-color: #007BFF;
- }
  .alert{
       margin-bottom: 0;
  }
@@ -23,3 +20,4 @@ body {
       border-radius: 15px;
       border-color: #046aaa;
   }
+

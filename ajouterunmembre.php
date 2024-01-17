@@ -91,10 +91,11 @@
     <input type="text" name="ville"  style= "margin-left: 550px;" placeholder="Ville"><br>
     <label for="codepostal" style= "margin-left: 550px;">Code postal :</label><br>
     <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;"><br>
-    <button type="submit" class="btn btn-outline-primary btn-sm" name="add" style= "margin-left: 100px;">
+    <button type="submit" class="btn btn-primary btn-lg" name="add">
                 <i class="fas fa-plus"></i> Ajouter un membre
     </button>
         </form>
+        <br>
     </div>
     </div>
 </body>

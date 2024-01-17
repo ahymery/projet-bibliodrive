@@ -58,12 +58,10 @@
         width: 250px;
         margin-left: 370px;
       }
-      
       input[name=btn-deco]{
-        margin-left: 180px !important;
-        margin-top: 0 !important;
-      }
-      
+    margin-left: 180px !important;
+    margin-top: 0 !important;
+  }
       </style>
 </head>
 <body>
@@ -107,12 +105,8 @@
 
         <?php 
         if(!isset($_SESSION['profil']) || $_SESSION['profil'] == 'client'){
-          echo '<br><h1 style="margin-left: 300px;">&#128214<strong>Dernières Acquisitions</strong>&#128214</h1><br>';
+          echo '<br><h1 style="margin-left: 260px;">&#128214<strong>Dernières Acquisitions</strong>&#128214</h1><br>';
           include "carousel.php";
-        }elseif(isset($_POST['montrerajoutlivre'])){
-          include 'ajouterunlivre.php';
-        }elseif(isset($_POST['montrerajoutmembre'])){
-          include 'ajouterunmembre.php';
         }elseif(isset($_POST['btn-src'])){
           include 'rechercheparauteur.php';
         }else{
@@ -130,7 +124,6 @@
           echo '<br><input type="submit" name="btn-deco" value="&#128274 Déconnexion" class="btn btn-primary btn-md"></input>';
           echo '</form>';
       }
-                 
       ?>
       </div>  
     </div>

@@ -19,7 +19,7 @@
   // Verification de la connexion
   
   if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connexion échoué: " . $conn->connect_error);
   }
 
   //  REQUETE SQL PERMETTANT DE TROUVER LA COVER D'UN LIVRE 

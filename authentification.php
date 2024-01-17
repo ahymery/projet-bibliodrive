@@ -35,7 +35,7 @@
   </style>
 </head>
 <body>
-      <form method="post" action="accueil.php">
+      <form method="post">
         <br><h5><strong>CONNEXION</strong></h5>
         <p>Adresse Mail</p>
         <input type="email" name="mel" placeholder="Mail">

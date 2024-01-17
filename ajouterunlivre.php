@@ -73,7 +73,7 @@ img {
       </div>  
     </div>
 </div> 
-  <!-- CONTENU DE LA PAGE-->
+  <!-- Formulaire permettant d'ajouter un livre -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8">
@@ -102,11 +102,12 @@ img {
                 <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
                 <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
                 <label for="photo" style= "margin-left: 550px;">Image :</label><br>
-                <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;">
-                <button type="submit" class="btn btn-outline-primary btn-sm" name="add">
+                <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;"><br>
+                <button type="submit" class="btn btn-primary btn-lg" name="add">
                   <i class="fas fa-plus"></i> Ajouter un livre
                 </button>
-          </form>
+              </form>
+              <br>
       </div>
     </div>
   </div>

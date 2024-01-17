@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         #covers {
-         margin-left: 750px;
+         margin-left: 650px;
          margin-top: 10px;
          margin-bottom: 10px;
          width: 350px;
@@ -61,9 +61,13 @@
             margin-top: -150px;
         }    
 
-        h5{
+        h4{
             margin-left: 50px;
         }
+        input[name=btn-deco]{
+    margin-left: 180px !important;
+    margin-top: 0 !important;
+  }
     </style>
 </head>
 <body>
@@ -103,17 +107,19 @@
     } 
     ?>
     <?php
-    if(!$_SESSION == 'client'){ 
-        echo '<h5>Veuillez vous connecter pour emprunter un livre.</h5>';
+    if($_SESSION){ 
+      echo '<form method="POST">';
+      echo '<input type="button" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
+      echo '</form>';
     }else{
-        echo '<form method="POST">';
-        echo '<input type="button" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
-        echo '</form>';
+      echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4  >';
     }
     ?>
+    </div>
+    <div class="col-md-4">
+    <?php
+       include('deconnexion.php');
+      ?>
   </div>
-</div>
-</div> 
-</div>
 </body>
 </html>
