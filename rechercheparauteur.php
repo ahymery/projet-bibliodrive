@@ -60,5 +60,6 @@
   session_start(); 
   include 'deconnexion.php';
    ?>
+   </div>
   </body>
 </html>

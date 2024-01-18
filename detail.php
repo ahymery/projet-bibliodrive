@@ -6,70 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioDrive</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        #covers {
-         margin-left: 650px;
-         margin-top: 10px;
-         margin-bottom: 10px;
-         width: 350px;
-         height: 500px;
-         border-radius: 15px;
-        }
-        #titre{
-          text-align: left;
-          margin-left: 15px;
-          margin-bottom: 100px;
-          margin-top: -400px;
-        }
-
-        #auteur{
-          text-align: left;
-          margin-left: 15px;
-          margin-bottom: 100px;
-          margin-top: -200px;
-        }
-
-        #isbn13{
-          text-align: left;
-          margin-left: 15px;
-          margin-bottom: 150px;
-          margin-top: -70px;
-        }
-        h2{
-            margin-left: 150px;
-            margin-top: -100px;
-            color: red;
-        }
-        #resume {
-            text-align: center;
-            margin-left: 15px;
-            margin-right: 500px;
-            margin-bottom: 25px;
-        }
-
-        form[name="btn-panier"]{
-            margin-left: 250px;
-        }
-        
-        .resume{
-            margin-top: -150px;
-        }    
-
-        h4{
-            margin-left: 50px;
-        }
-        input[name=btn-deco]{
-    margin-left: 180px !important;
-    margin-top: 0 !important;
-  }
-    </style>
 </head>
+<style>
+  #covers {
+  margin-left: 700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 320px;
+  height: 500px;
+  border-radius: 15px;
+ }
+ 
+ #titre{
+   text-align: left;
+   margin-left: 15px;
+   margin-bottom: 100px;
+   margin-top: -400px;
+ }
+
+ #auteur{
+   text-align: left;
+   margin-left: 15px;
+   margin-bottom: 100px;
+   margin-top: -200px;
+ }
+
+ #isbn13{
+   text-align: left;
+   margin-left: 15px;
+   margin-bottom: 150px;
+   margin-top: -70px;
+ }
+ h2{
+     margin-left: 200px;
+     margin-top: -150px;
+     color: red;
+ }
+ #resume {
+     text-align: center;
+     margin-right: 420px;
+     margin-bottom: 25px;
+ }
+ </style>
 <body>
 <div class="container-fluid">
     <div class="row">
@@ -96,24 +74,35 @@
     $select->execute();
   
     while($enregistrement = $select->fetch()){
-         echo '<img id="covers" src="covers/', $enregistrement->photo, '"/>';
-        echo '<h3 id="titre">Titre : ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</h3><br>';
-        echo '<h3 id="auteur">Auteur : ', $enregistrement->prenom ,' ', $enregistrement->nom ,'</h3><br>';
-        echo '<h3 id="isbn13">ISBN-13 : ', $enregistrement->isbn13 ,'</h3><br>';
-        echo '<div class="resume">';
-        echo '<h2>Résumé du livre : </h2>', '<p id="resume">', $enregistrement->detail ,'</p>';
-        echo '</div>';
-        } 
-    } 
-    ?>
-    <?php
-    if($_SESSION){ 
-      echo '<form method="POST">';
-      echo '<input type="button" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
-      echo '</form>';
-    }else{
-      echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4  >';
+      echo '<img id="covers" src="covers/', $enregistrement->photo, '"/>';
+      echo '<h3 id="titre">Titre : ', $enregistrement->titre ," (", $enregistrement->anneeparution ,")", '</h3><br>';
+      echo '<h3 id="auteur">Auteur : ', $enregistrement->prenom ,' ', $enregistrement->nom ,'</h3><br>';
+      echo '<h3 id="isbn13">ISBN-13 : ', $enregistrement->isbn13 ,'</h3><br>';
+      echo '<div class="resume">';
+      echo '<h2>Résumé du livre : </h2>', '<p id="resume">', $enregistrement->detail ,'</p>';
+      echo '</div>';
+      
+      if($_SESSION){ 
+        echo '<form method="POST">';
+        echo '<input type="submit" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
+        echo '</form>';
+      }else{
+        echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4  >';
+      }
+
+      if(!isset($_SESSION['panier'])){
+     // Initialisation du panier
+     $_SESSION['panier'] = array();
     }
+  
+    // On ajoute les entrées dans le tableau
+    if(isset($_POST['btn-ajoutpanier'])){
+      array_push($_SESSION['panier'], $enregistrement->titre);  
+      echo "Livre ajouté avec succès.";
+    }
+  }
+  }
+  
     ?>
     </div>
     <div class="col-md-4">

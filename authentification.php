@@ -2,37 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style2.css"/>
+    <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioDrive</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <style>
-
-  img {
-    height:50px;
-  }
-  .jumbotron{
-    background-color: #007BFF;
-   }
-   .alert{
-        margin-bottom: 0;
-
-   }
-
-    .carousel-inner img {   
-         width: 100%;
-         height: 100%;
-    }
-
-    input[type="search"] {
-        padding: 12px 15px;
-        border-radius: 15px;
-        border-color: #046aaa;
-    }   
-
-  </style>
 </head>
 <body>
       <form method="post">
@@ -41,7 +16,7 @@
         <input type="email" name="mel" placeholder="Mail">
         <p>Mot de Passe</p>
         <input type="password" name="motdepasse" placeholder="Mot de Passe">
-        <br><button type="submit" class="btn btn-primary btn-sm"> &#128275 Connexion</button>
+        <br><input type="submit" name="btn-connexion" class="btn btn-primary btn-sm" value=" &#128275 Connexion"></input>
     </form>
     <?php
 
