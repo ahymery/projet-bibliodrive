@@ -7,11 +7,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
-  <style>
-
-
-
-</style>
 </head>
 <?php session_start();?>
 <?php
@@ -67,7 +62,7 @@
             <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
           <?php            
             require_once('connexion.php');
-            echo "<select name=\"noauteur\" id=\"auteur\" required style= 'margin-left:550px'>";
+            echo "<select name='noauteur' id='auteurs' required style= 'margin-left:550px'>";
             echo "<option value=\"\" disabled selected>Sélectionner auteur</option>";
             $req = $connexion->query("SELECT noauteur, nom FROM auteur");
             $req->setFetchMode(PDO::FETCH_OBJ);

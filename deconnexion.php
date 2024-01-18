@@ -32,7 +32,7 @@
         include 'authentification.php';
       }elseif(isset($_SESSION['profil'])){
           echo '<form method="POST">';
-          echo '<br><h3 id="bienvenue" style="text-align: center;"><strong>Bienvenue </strong>',' ',  $_SESSION['compte']->nom ,' ', $_SESSION['compte']->prenom ,'</h3>  ', '<h4 style="text-align: center;">' ,'<br> ',  $_SESSION['compte']->mel ,'<br> ',  $_SESSION['compte']->adresse, '<br> ',  $_SESSION['compte']->ville, ' ',  $_SESSION['compte']->codepostal ,'</h4>';
+          echo '<br><h3 id="bienvenue" style="text-align: center;"><strong>Bienvenue </strong>',' ',  $_SESSION['compte']->nom ,' ', $_SESSION['compte']->prenom ,'</h3>  ', '<h4 style="text-align: center;" id="client">' ,'<br> ',  $_SESSION['compte']->mel ,'<br> ',  $_SESSION['compte']->adresse, '<br> ',  $_SESSION['compte']->ville, ' ',  $_SESSION['compte']->codepostal ,'</h4>';
           echo '<br><input type="submit" name="btn-deco" value="&#128274 Déconnexion" class="btn btn-primary btn-md"></input>';
          echo '</form>';
       }

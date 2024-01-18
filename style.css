@@ -91,6 +91,46 @@ width: 100%;
 height: 100%;
 }
 
+#titre{
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 100px;
+  margin-top: -400px;
+}
 
+#auteur{
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 100px;
+  margin-top: -200px;
+}
 
+#isbn13{
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 150px;
+  margin-top: -70px;
+}
+h2{
+    margin-left: 200px;
+    margin-top: -150px;
+    color: red;
+}
+#resume {
+    text-align: center;
+    margin-right: 420px;
+    margin-bottom: 25px;
+}
 
+#covers {
+  margin-left: 700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 320px;
+  height: 500px;
+  border-radius: 15px;
+ }  
+
+ #client{
+  margin-right: 50px;
+ }

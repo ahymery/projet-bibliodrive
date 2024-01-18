@@ -6,48 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioDrive</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-  #covers {
-  margin-left: 700px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 320px;
-  height: 500px;
-  border-radius: 15px;
- }
- 
- #titre{
-   text-align: left;
-   margin-left: 15px;
-   margin-bottom: 100px;
-   margin-top: -400px;
- }
-
- #auteur{
-   text-align: left;
-   margin-left: 15px;
-   margin-bottom: 100px;
-   margin-top: -200px;
- }
-
- #isbn13{
-   text-align: left;
-   margin-left: 15px;
-   margin-bottom: 150px;
-   margin-top: -70px;
- }
- h2{
-     margin-left: 200px;
-     margin-top: -150px;
-     color: red;
- }
- #resume {
-     text-align: center;
-     margin-right: 420px;
-     margin-bottom: 25px;
- }
- </style>
 <body>
 <div class="container-fluid">
     <div class="row">

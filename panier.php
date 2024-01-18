@@ -26,7 +26,7 @@
 
    <div class="row">
     <div class="col-md-8">
-   <h1>PANIER</h1>  
+   <h1 id='panier'>PANIER</h1>  
    <?php
          echo '' 
      ?>
