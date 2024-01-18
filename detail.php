@@ -44,7 +44,7 @@
       
       if($_SESSION){ 
         echo '<form method="POST">';
-        echo '<input type="submit" name="btn-ajoutpanier" class="btn btn-outline-primary btn-lg" value="Ajouter au panier"></input>';
+        echo '<input type="submit" name="btn-ajoutpanier" class="btn btn-primary btn-lg" value="Ajouter au panier"></input>';
         echo '</form>';
       }else{
         echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4  >';

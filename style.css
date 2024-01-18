@@ -63,7 +63,7 @@ input[name="btn-panier"]{
 
 
  input[name=btn-deco]{
-margin-left: 240px !important;
+margin-left: 180px !important;
 margin-top: 0 !important;
 }
 
@@ -118,7 +118,8 @@ h2{
 }
 #resume {
     text-align: center;
-    margin-right: 420px;
+    margin-right: 250px;
+    padding-left: 100px;
     margin-bottom: 25px;
 }
 
@@ -134,3 +135,34 @@ h2{
  #client{
   margin-right: 50px;
  }
+
+ h3 {
+  margin-left: 15px;
+ }
+
+ #panier{
+  text-align: center;
+  font-weight: 700;
+  color: green;
+  margin-top: 75px;
+  margin-bottom: 30px;
+
+ }
+
+#reste, #emprunts{
+  text-align: center;
+ }
+
+  input[name = valider] {
+    margin-left: 400px !important;
+    margin-top: 20px !important;
+ }
+
+ input[name = annuler]{
+  margin-bottom: 5px;
+
+ }
+
+ #contenupanier { 
+  margin-left: 300px;
+}

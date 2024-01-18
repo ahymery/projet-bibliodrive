@@ -12,9 +12,9 @@
 <body>
       <form method="post">
         <br><h5><strong>CONNEXION</strong></h5>
-        <p>Adresse Mail</p>
+        <h6>Adresse Mail</h6>
         <input type="email" name="mel" placeholder="Mail">
-        <p>Mot de Passe</p>
+        <h6>Mot de Passe</h6>
         <input type="password" name="motdepasse" placeholder="Mot de Passe">
         <br><input type="submit" name="btn-connexion" class="btn btn-primary btn-sm" value=" &#128275 Connexion"></input>
     </form>

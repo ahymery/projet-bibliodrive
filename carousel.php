@@ -42,7 +42,7 @@
   <a class="carousel-control-prev" href="#livres" data-slide="prev" style="background: black; margin-left: 15px;">
     <span class="carousel-control-prev-icon"></span>
   </a>
-  <a class="carousel-control-next" href="#livres" data-slide="next" style="background: black; margin-right: 250px;">
+  <a class="carousel-control-next" href="#livres" data-slide="next" style="background: black; margin-right: 10px;">
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
