@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,8 +52,7 @@
 </div>
 <div class="col-md-4">
   <?php
-  session_start();
-  include 'deconnexion.php';
+    include 'deconnexion.php';
    ?>
    </div>
   </body>
