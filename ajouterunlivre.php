@@ -57,13 +57,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8">
-        <form method="post">
+        <form method="post" action="accueil.php">
           <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
             <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
           <?php            
             require_once('connexion.php');
             echo "<select name='noauteur' id='auteurs' required style= 'margin-left:550px'>";
-            echo "<option value=\"\" disabled selected>Sélectionner auteur</option>";
+            echo "<option>Sélectionner auteur</option>";
             $req = $connexion->query("SELECT noauteur, nom FROM auteur");
             $req->setFetchMode(PDO::FETCH_OBJ);
 
@@ -83,9 +83,7 @@
                 <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
                 <label for="photo" style= "margin-left: 550px;">Image :</label><br>
                 <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;"><br>
-                <button type="submit" class="btn btn-primary btn-lg" name="add">
-                  <i class="fas fa-plus"></i> Ajouter un livre
-                </button>
+                <input type="submit" class="btn btn-primary btn-md" name="addbook" value="Ajouter un livre"></input> 
               </form>
               <br>
       </div>

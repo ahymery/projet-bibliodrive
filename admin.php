@@ -21,30 +21,30 @@
         <!-- ENTETE AVEC BOUTONS SE DIRIGEANTS VERS LES PAGES ajoutermembre.php et ajouterunlivre.php -->
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                            <ul class="nav-item" style="list-style: none; display: flex;">
-                                    <li class="nav-item">
-                                      <form method="POST" action="ajouterunmembre.php"> 
-                                      <button type="submit" name="ajoutmembre" class="btn btn-primary btn-lg">
-                                            <i class="fas fa-user"></i> Créer un membre
-                                        </button>                                    </form>
-                                    <li class="nav-item">
-                                    <form method="POST"  action="ajouterunlivre.php"> 
-                                        <button type="submit" name="ajoutlivre" class="btn btn-primary btn-lg">
-                                            <i class="fas fa-book"></i> Ajouter un livre
-                                        </button>
-                                    </form>
-
-                                    <?php 
-                                     if(isset($_POST['ajoutlivre']) || isset($_POST['ajoutmembre'])){
-                                         echo '<li class="nav-item">
-                                         <form action="accueil.php">
-                                         <input type="submit" class="btn btn-primary btn-lg" value="Accueil"></input>
-                                         </form>
-                                         </li>'; 
-                                    }
-                                ?>
-                             </li>
-                        </li>   
+                                <ul class="nav-item" style="list-style: none; display: flex;">
+                                        <form method="POST" action="ajouterunmembre.php">
+                                        <button type="submit" name="ajoutmembre" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-user"></i> Créer un membre
+                                            </button>                                    
+                                        </form>
+                                        <form method="POST" action="ajouterunlivre.php"> 
+                                            <button type="submit" name="ajoutlivre" class="btn btn-primary btn-lg">
+                                                <i class="fas fa-book"></i> Ajouter un livre
+                                            </button>
+                                        </form>
+                                        
+                                        <?php 
+                            if(isset($_POST['ajoutlivre']) || isset($_POST['ajoutmembre'])){
+                                echo '<li class="nav-item">
+                                   <form action="accueil.php">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Accueil"></input>
+                           </form>
+                         </li>'; 
+                        }    
+                        if(!$_SESSION == 'admin'){
+                           echo '<script>alert("hacké")</script>'; 
+                        }
+                    ?>
                     </ul>
                 </form>
             </div>  

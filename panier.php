@@ -28,17 +28,8 @@
     <div class="col-md-8">
    <h1 id='panier'>Votre panier</h1>  
    <?php 
-         /* Récupération du nom, prénom de l'auteur 
-            ainsi que de l'année de parution du livre */
-          require_once('connexion.php');
-         
-         $stmt = $connexion->prepare("SELECT auteur.nom, auteur.prenom, livre.anneeparution FROM livre 
-        INNER JOIN auteur ON auteur.noauteur = livre.noauteur");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute();
+        
         // Affichage du panier 
-         
-        if($enregistrement = $stmt->fetch()){
 
           $nb_livresempruntés = count($_SESSION['panier']); 
           $nb_emprunts = (5 - $nb_livresempruntés);
@@ -48,17 +39,18 @@
             echo '<p id="contenupanier">', $_SESSION['panier'][$id];
             echo '<input type="submit" id="contenupanier" name="annuler" class="btn btn-primary btn-sm" value="Annuler la réservation">';
             echo '</form></p>';
-          } if ( empty($_SESSION['panier'])){
+          } 
+          
+          if (empty($_SESSION['panier'])){
             echo '<h5 id="vide">C`est vide ici.. Vous pouvez réserver un livre si vous le souhaitez !</h5>';
-          }
-          echo '<h5  id="emprunts">Vous avez réserver ', $nb_livresempruntés ,' livre(s).</h5>';
+          }elseif(in_array($id, $_SESSION['panier']))
           echo '<form method="POST">';
           echo '<input type="submit" name="valider" class="btn btn-primary btn-lg" value="Valider le panier">';
           echo '</form>';
-        }
+        
 
          /* Requête permettant de supprimer un contenu du panier en cliquant 
-            sur le bouton 'annuler'*/
+            sur le bouton 'annuler' */
 
         if(isset($_POST['annuler'])){
           unset($_SESSION['panier'][array_search($id, $_SESSION['panier'])]);
@@ -72,28 +64,23 @@
 
             if(isset($_POST['valider'])){
                 require_once('connexion.php');
-                $mel=$_SESSION['compte'];
-                $nolivre=$_REQUEST['nolivre'];  
+                $mel=$_SESSION['mel'];
+                $nolivre=$_POST['nolivre'];  
                 $dateemprunt = date("Y-m-d");
-            
+
                 // Vérifie d'abord si le  existe dans la base de données
-                $stmt = $connexion->prepare("SELECT * FROM livre WHERE nolivre = :nolivre");
-                $stmt->bindValue(':nolivre', $nolivre, PDO::PARAM_STR);
-                $stmt->execute();
-                $nolivre = $stmt->fetch();
-                
+                              
                 if ($nolivre) { // Requête pour ajouter les informations du livre dans la base de donnée SQL
                   
                   $stmt = $connexion->prepare("INSERT INTO emprunter(mel, nolivre, dateemprunt)
-                    VALUES (:");
+                    VALUES (:mel, :nolivre, :dateemprunt)");
                   $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
                   $stmt->bindValue(':dateemprunt', $dateemprunt, PDO::PARAM_STR);
+                  $stmt->bindValue(':nolivre', $nolivre, PDO::PARAM_STR);
+                  $stmt->execute(); 
+                }
 
-$stmt->bindValue(':noauteur', $noauteur, PDO::PARAM_STR);
-$stmt->execute();
-}
-
-}
+      } 
      ?>
   </div>
   <div class="col-md-4">

@@ -12,8 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/tarteaucitron/tarteaucitron.js"></script>
-
-  <script>
+    <script>
 
     tarteaucitron.init({
 
@@ -61,7 +60,7 @@
     margin-left: 240px !important;
     margin-top: 0 !important;
   }
-      </style>
+    </style>
 </head>
 <body>
   <?php session_start();?>
@@ -82,7 +81,7 @@
      else {
        $_SESSION['profil'] =  $_SESSION['compte']->profil;
      }
-      }
+    }
     if(isset($_POST['btn-deco'])){
       session_unset();  
     }   

@@ -42,12 +42,13 @@
       echo '<h2>Résumé du livre : </h2>', '<p id="resume">', $enregistrement->detail ,'</p>';
       echo '</div>';
       
+
       if($_SESSION){ 
         echo '<form method="POST">';
         echo '<input type="submit" name="btn-ajoutpanier" class="btn btn-primary btn-lg" value="Ajouter au panier"></input>';
         echo '</form>';
       }else{
-        echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4  >';
+        echo '<h4>Veuillez vous connecter pour emprunter un livre.</h4>';
       }
 
       if(!isset($_SESSION['panier'])){
@@ -56,13 +57,12 @@
     }
   
     // On ajoute les entrées dans le tableau
-    if(isset($_POST['btn-ajoutpanier'])){
+  if(isset($_POST['btn-ajoutpanier'])){
       array_push($_SESSION['panier'], $enregistrement->titre);  
       echo "Livre ajouté avec succès.";
+  }
+}
     }
-  }
-  }
-  
     ?>
     </div>
     <div class="col-md-4">

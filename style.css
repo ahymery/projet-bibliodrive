@@ -63,7 +63,7 @@ input[name="btn-panier"]{
 
 
  input[name=btn-deco]{
-margin-left: 180px !important;
+margin-left: 240px !important;
 margin-top: 0 !important;
 }
 
@@ -118,8 +118,9 @@ h2{
 }
 #resume {
     text-align: center;
-    margin-right: 250px;
-    padding-left: 100px;
+    padding-left: 25px !important;
+    margin-left: -10px !important;
+    margin-right: 450px !important;
     margin-bottom: 25px;
 }
 
@@ -154,17 +155,16 @@ h2{
  }
 
   input[name = valider] {
-    margin-left: 400px !important;
+    margin-left: 550px !important;
     margin-top: 20px !important;
  }
 
  input[name = annuler]{
   margin-bottom: 5px;
-
  }
 
- #contenupanier { 
-  margin-left: 300px;
+ p { 
+    text-align: center;
 }
 
 #vide{
@@ -173,3 +173,10 @@ h2{
   color: rgb(255, 88, 88);
 }
 
+input[name=addbook]{
+  margin-left: 550px !important;
+}
+
+input[name=addmembre]{
+  margin-left: 550px !important;
+}

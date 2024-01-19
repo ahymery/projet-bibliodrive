@@ -23,6 +23,7 @@
        $_SESSION['profil'] =  $_SESSION['compte']->profil;
      }
       }
+    
     if(isset($_POST['btn-deco'])){
       session_unset();  
     }   

@@ -26,11 +26,11 @@
 <div class="row">
   <div class="col-md-8">
 <?php
-  // Connexion à la base de données MySQL 
+   // Connexion à la base de données MySQL 
     require_once('connexion.php');
 
     // Envoi de la requête vers MySQL
-    if ($auteur = $_GET["recherche"]) {
+    if ($auteur = $_GET["recherche"]){
       
       $select = $connexion->prepare("SELECT * FROM livre
                                      INNER JOIN auteur ON livre.noauteur = auteur.noauteur
@@ -45,9 +45,6 @@
         echo '</form>';
       }
     } 
-    if($enregistrement <> $select->fetch()){
-      echo 'Aucun résultats.';
-    }
 ?>
 </div>
 <div class="col-md-4">

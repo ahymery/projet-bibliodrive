@@ -22,23 +22,23 @@
         $mdp_bdd = password_hash($motdepasse, PASSWORD_ARGON2I);
         
       
-      $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
-      $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
-      $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-      $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
-      $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
-      $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
-      $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
-      $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
-      $stmt->execute();
-    }
+        $stmt = $connexion->prepare("INSERT INTO utilisateur(nom, prenom, adresse, mel, motdepasse, ville, codepostal, profil) VALUES(:nom, :prenom, :adresse, :mel, :motdepasse, :ville, :codepostal, 'client')");
+        $stmt->bindValue(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+        $stmt->bindValue(':adresse', $adresse, PDO::PARAM_STR);
+        $stmt->bindValue(':mel', $mel, PDO::PARAM_STR);
+        $stmt->bindValue(':motdepasse', $motdepasse, PDO::PARAM_STR);
+        $stmt->bindValue(':ville', $ville, PDO::PARAM_STR);
+        $stmt->bindValue(':codepostal', $codepostal, PDO::PARAM_STR);
+        $stmt->execute();
+      }
     ?>
 <body>
   <!-- ENTETE -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4 col-md-12">
-        <?php include 'admin.php'; ?>
+        <?php include 'admin.php';?>
       </div>  
     </div>
   </div> 
@@ -47,24 +47,22 @@
   <div class="row">
       <div class="col-md-8">
         <form method="post">
-    <br><h1 style= "padding-left: 550px;"><strong>CRÉER UN MEMBRE</strong></h1><br>
-    <label for="mel" style="margin-left: 550px;">Mail :</label><br>
-    <input type="email" name="mel" style="margin-left: 550px;" placeholder="Mail"><br>
-    <label for="motdepasse" style= "margin-left: 550px;">Mot de passe :</label><br>
-    <input type="password" name="motdepasse" style= "margin-left: 550px;" placeholder="Mot de passe"><br>
-    <label for="nom" style= "margin-left: 550px;">Nom :</label><br>
-    <input type="text" name="nom" style= "margin-left: 550px;" placeholder="Nom"><br>
-    <label for="prenom" style= "margin-left: 550px;">Prénom :</label><br>
-    <input type="text" name="prenom" style= "margin-left: 550px;" placeholder="Prénom"><br>
-    <label for="adresse" style= "margin-left: 550px;">Adresse :</label><br>
-    <input type="text" name="adresse" placeholder="Adresse" style= "margin-left: 550px;"></input><br>
-    <label for="ville" style= "margin-left: 550px;">Ville :</label><br>
-    <input type="text" name="ville"  style= "margin-left: 550px;" placeholder="Ville"><br>
-    <label for="codepostal" style= "margin-left: 550px;">Code postal :</label><br>
-    <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;"><br>
-    <button type="submit" class="btn btn-primary btn-lg" name="add">
-                <i class="fas fa-plus"></i> Ajouter un membre
-    </button>
+            <br><h1 style= "padding-left: 550px;"><strong>CRÉER UN MEMBRE</strong></h1><br>
+            <label for="mel" style="margin-left: 550px;">Mail :</label><br>
+            <input type="email" name="mel" style="margin-left: 550px;" placeholder="Mail"><br>
+            <label for="motdepasse" style= "margin-left: 550px;">Mot de passe :</label><br>
+            <input type="password" name="motdepasse" style= "margin-left: 550px;" placeholder="Mot de passe"><br>
+            <label for="nom" style= "margin-left: 550px;">Nom :</label><br>
+            <input type="text" name="nom" style= "margin-left: 550px;" placeholder="Nom"><br>
+            <label for="prenom" style= "margin-left: 550px;">Prénom :</label><br>
+            <input type="text" name="prenom" style= "margin-left: 550px;" placeholder="Prénom"><br>
+            <label for="adresse" style= "margin-left: 550px;">Adresse :</label><br>
+            <input type="text" name="adresse" placeholder="Adresse" style= "margin-left: 550px;"></input><br>
+            <label for="ville" style= "margin-left: 550px;">Ville :</label><br>
+            <input type="text" name="ville"  style= "margin-left: 550px;" placeholder="Ville"><br>
+            <label for="codepostal" style= "margin-left: 550px;">Code postal :</label><br>
+            <input type="text" name="codepostal" placeholder="Code postal" style= "margin-left: 550px;"><br>
+            <input type="submit" class="btn btn-primary btn-md" name="addmembre" value="Créer un membre"></input>
         </form>
         <br>
     </div>
