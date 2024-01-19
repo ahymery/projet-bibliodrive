@@ -67,8 +67,6 @@
                 $mel=$_SESSION['mel'];
                 $nolivre=$_POST['nolivre'];  
                 $dateemprunt = date("Y-m-d");
-
-                // Vérifie d'abord si le  existe dans la base de données
                               
                 if ($nolivre) { // Requête pour ajouter les informations du livre dans la base de donnée SQL
                   

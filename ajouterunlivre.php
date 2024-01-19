@@ -41,7 +41,9 @@
         $stmt->execute();
     }
 
-}
+  }
+
+
 ?>
 
 <body>
@@ -57,39 +59,49 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8">
-        <form method="post" action="accueil.php">
-          <br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>
-            <label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>
-          <?php            
-            require_once('connexion.php');
-            echo "<select name='noauteur' id='auteurs' required style= 'margin-left:550px'>";
-            echo "<option>Sélectionner auteur</option>";
-            $req = $connexion->query("SELECT noauteur, nom FROM auteur");
-            $req->setFetchMode(PDO::FETCH_OBJ);
+    <?php
+    if($_SESSION){
 
-            while($noauteur = $req->fetch()){
-            echo "<option value=\"{$noauteur->noauteur}\">{$noauteur->nom}</option>";
-            }
+      echo '<form method="post">';
+      echo '<br><h1 style= "margin-left: 550px;"><strong>AJOUTER UN LIVRE</strong></h1><br>';
+      echo '<label for="noauteur" style= "margin-left: 550px;">Auteur :</label><br>';
 
-            echo "</select>";
-              ?><br>
-                <label for="titre" style= "margin-left: 550px;">Titre :</label><br>
-                <input type="text" name="titre" style= "margin-left: 550px;"><br>
-                <label for="isbn13" style= "margin-left: 550px;">ISBN13 :</label><br>
-                <input type="text" name="isbn13" style= "margin-left: 550px;"><br>
-                <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
-                <input type="text" name="anneeparution" style= "margin-left: 550px;"><br>
-                <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
-                <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
-                <label for="photo" style= "margin-left: 550px;">Image :</label><br>
-                <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;"><br>
-                <input type="submit" class="btn btn-primary btn-md" name="addbook" value="Ajouter un livre"></input> 
-              </form>
-              <br>
-      </div>
+      require_once('connexion.php');
+      echo "<select name='noauteur' id='auteurs' required style= 'margin-left:550px'>";
+      echo "<option>Sélectionner auteur</option>";
+      $req = $connexion->query("SELECT noauteur, nom FROM auteur");
+      $req->setFetchMode(PDO::FETCH_OBJ);
+      
+      while($noauteur = $req->fetch()){
+        echo "<option value=\"{$noauteur->noauteur}\">{$noauteur->nom}</option>";
+      }
+      
+      echo "</select>";
+      echo '<br>';
+      echo '<label for="titre" style= "margin-left: 550px;">Titre :</label><br>
+      <input type="text" name="titre" placeholder="Titre" style= "margin-left: 550px;"><br>
+      <label for="isbn13" style="margin-left: 550px;">ISBN13 :</label><br>
+      <input type="text" placeholder="ISBN-13" name="isbn13" style= "margin-left: 550px;"><br>
+      <label for="anneeparution" style= "margin-left: 550px;">Année de parution :</label><br>
+      <input type="text" placeholder="Année de parution" name="anneeparution" style= "margin-left: 550px;"><br>
+      <label for="detail" style= "margin-left: 550px;">Résumé :</label><br>
+      <textarea name="detail" placeholder="Résumé du livre" style= "margin-left: 550px;"></textarea><br>
+      <label for="photo" style= "margin-left: 550px;">Image :</label><br>
+      <input type="text" name="photo" placeholder="Insérez le nom du fichier" style= "margin-left: 550px;"><br>
+      <input type="submit" class="btn btn-primary btn-md" name="addbook" value="Ajouter un livre"></input> 
+      </form>
+      <br>
+      </div>';
+    }else{
+      echo '<h1 id="alerte">Tu fais quoi la ?<h1>';
+    }
+    ?>
       <div class="col-md-4">
+  
   <?php
-  include 'deconnexion.php';
+  if($_SESSION){
+    include 'deconnexion.php';
+  }
    ?>
    </div>    
 </body>

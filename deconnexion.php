@@ -26,6 +26,7 @@
     
     if(isset($_POST['btn-deco'])){
       session_unset();  
+      header('refresh:0');
     }   
     ?>
     <?php

@@ -41,9 +41,6 @@
                            </form>
                          </li>'; 
                         }    
-                        if(!$_SESSION == 'admin'){
-                           echo '<script>alert("hacké")</script>'; 
-                        }
                     ?>
                     </ul>
                 </form>

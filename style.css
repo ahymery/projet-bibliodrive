@@ -61,9 +61,8 @@ input[name="btn-panier"]{
      margin-left: 50px;
  }
 
-
- input[name=btn-deco]{
-margin-left: 240px !important;
+input[name=btn-deco]{
+margin-left: 180px !important;
 margin-top: 0 !important;
 }
 
@@ -118,9 +117,9 @@ h2{
 }
 #resume {
     text-align: center;
-    padding-left: 25px !important;
-    margin-left: -10px !important;
-    margin-right: 450px !important;
+    padding-left:  20px !important;
+    margin-left: 100px !important;
+    margin-right: 300px !important;
     margin-bottom: 25px;
 }
 
@@ -155,7 +154,7 @@ h2{
  }
 
   input[name = valider] {
-    margin-left: 550px !important;
+    margin-left: 420px !important;
     margin-top: 20px !important;
  }
 
@@ -179,4 +178,11 @@ input[name=addbook]{
 
 input[name=addmembre]{
   margin-left: 550px !important;
+}
+
+#alerte{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
 }
