@@ -1,6 +1,6 @@
 **BIBLIODRIVE**
 
-*Projet de 1ere année de BTS SIO* 
+*Premier projet de 1ère année de BTS SIO* 
 
 
 Langages de programmation utilisés :
